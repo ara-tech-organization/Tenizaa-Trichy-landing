@@ -60,13 +60,43 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .benefits {
-    padding: 64px 0 76px;
+    padding: 80px 0 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits__marquee {
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .benefits__pill {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits {
+    padding: 56px 0 64px;
   }
 
   .benefits__pill {
     padding: 11px 18px;
     font-size: 13.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .benefits__track {
+    gap: 12px;
+  }
+
+  .benefits__pill {
+    padding: 10px 14px;
+    font-size: 13px;
+    gap: 8px;
   }
 }

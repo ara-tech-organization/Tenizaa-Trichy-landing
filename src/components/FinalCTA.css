@@ -67,8 +67,34 @@
   transform: translateY(-3px);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .final-cta {
-    padding: 76px 0;
+    padding: 90px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .final-cta__actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .final-cta {
+    padding: 64px 0;
+  }
+
+  .final-cta__actions {
+    flex-direction: column;
+  }
+
+  .final-cta__actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .final-cta p {
+    font-size: 15px;
   }
 }

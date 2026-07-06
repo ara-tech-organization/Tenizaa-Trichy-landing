@@ -1,6 +1,6 @@
 .programs {
   padding: 100px 0;
-  background: var(--bg-soft);
+  background: var(--white);
 }
 
 .programs__panel {
@@ -16,11 +16,12 @@
 }
 
 .programs__list {
-  background: var(--grad-dark);
+  background: var(--white);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  border-right: 1px solid var(--border);
 }
 
 .programs__tab {
@@ -32,7 +33,7 @@
   background: transparent;
   border: none;
   text-align: left;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--body);
   font-size: 14.5px;
   font-weight: 500;
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -45,25 +46,26 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--primary-dark);
   flex-shrink: 0;
 }
 
 .programs__tab:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--white);
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--ink);
 }
 
 .programs__tab.is-active {
-  background: var(--white);
-  color: var(--primary-darker);
+  background: var(--primary-darker);
+  color: var(--white);
   transform: translateX(4px);
   box-shadow: var(--shadow-md);
 }
 
 .programs__tab.is-active .programs__tab-icon {
-  background: var(--lime-light);
-  color: var(--primary-dark);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
 }
 
 .programs__detail {
@@ -144,7 +146,17 @@
   color: var(--primary-darker);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
+  .programs {
+    padding: 80px 0;
+  }
+
+  .programs__detail {
+    padding: 44px 40px;
+  }
+}
+
+@media (max-width: 768px) {
   .programs__panel {
     grid-template-columns: 1fr;
   }
@@ -172,8 +184,42 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .programs {
-    padding: 64px 0;
+    padding: 56px 0;
+  }
+
+  .programs__detail h3 {
+    font-size: 22px;
+  }
+
+  .programs__detail-icon {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 18px;
+  }
+
+  .programs__chips li {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .programs__detail {
+    padding: 28px 18px;
+  }
+
+  .programs__tab-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .programs__detail h3 {
+    font-size: 20px;
+  }
+
+  .programs__detail > p {
+    font-size: 14.5px;
   }
 }

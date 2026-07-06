@@ -1,0 +1,88 @@
+.floating-social {
+  position: fixed;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  background: var(--grad-primary);
+  border-radius: 9px;
+  padding: 6px;
+  box-shadow: var(--shadow-lg);
+}
+
+.floating-social__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--white);
+  position: relative;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.floating-social__btn:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 22%;
+  right: 22%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.floating-social__btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.08);
+}
+
+@media (max-width: 1199px) and (min-width: 769px) {
+  .floating-social {
+    top: auto;
+    bottom: 16px;
+    right: 16px;
+    transform: none;
+    flex-direction: row;
+  }
+
+  .floating-social__btn:not(:last-child)::after {
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+    margin-left: 2px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-social {
+    right: 0px;
+    padding: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-social {
+    right: 0px;
+    padding: 9px;
+  }
+
+  .floating-social__btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 360px) {
+  .floating-social__btn {
+    width: 34px;
+    height: 34px;
+  }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Phone, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import logo from '../assets/tenzia logo.png'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import './Header.css'
@@ -62,10 +62,6 @@ function Header() {
         </nav>
 
         <div className="site-header__actions">
-          <a href="tel:+919080808183" className="site-header__call">
-            <Phone size={16} strokeWidth={2.4} />
-            <span>Call Our Wellness Experts</span>
-          </a>
           <a
             href={pathForId('consult')}
             className="btn btn-primary site-header__cta"

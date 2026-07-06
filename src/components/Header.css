@@ -91,7 +91,7 @@
   display: none;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .site-header__nav,
   .site-header__call {
     display: none;
@@ -126,8 +126,29 @@
   }
 }
 
+@media (max-width: 768px) {
+  .site-header__inner {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .site-header__logo img {
+    height: 38px;
+  }
+}
+
 @media (max-width: 480px) {
+  .site-header__inner {
+    gap: 16px;
+  }
+
   .site-header__logo img {
     height: 34px;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header__logo img {
+    height: 30px;
   }
 }

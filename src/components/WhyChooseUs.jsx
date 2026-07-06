@@ -53,7 +53,7 @@ function WhyChooseUs() {
           {REASONS.map((reason, i) => {
             const Icon = reason.icon
             return (
-              <Reveal as="div" key={reason.title} delay={i * 90} className={`why__card ${i === 0 ? 'why__card--lead' : ''}`}>
+              <Reveal as="div" key={reason.title} delay={i * 90} className="why__card">
                 <div className="why__icon">
                   <Icon size={26} strokeWidth={1.8} />
                 </div>

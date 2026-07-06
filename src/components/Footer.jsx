@@ -1,7 +1,14 @@
-import { MapPin, PhoneCall, Mail, Instagram, Heart } from 'lucide-react'
+import { MapPin, PhoneCall, Mail, Heart } from 'lucide-react'
 import logo from '../assets/tenzia logo.png'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
+import { FacebookIcon, InstagramIcon, WhatsAppIcon } from './BrandIcons'
 import './Footer.css'
+
+const SOCIALS = [
+  { label: 'Facebook', href: 'https://www.facebook.com/tenziaaclinictrichy/', Icon: FacebookIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/tenziaaclinictrichy/', Icon: InstagramIcon },
+  { label: 'WhatsApp', href: 'https://wa.me/919080808183', Icon: WhatsAppIcon },
+]
 
 const LINKS = [
   { label: 'Why Us', id: 'why-us' },
@@ -18,6 +25,13 @@ function Footer() {
         <div className="site-footer__brand">
           <img src={logo} alt="Tenziaa Wellness and Aesthetic Clinic" />
           <p>Personalized weight loss &amp; wellness programs in Trichy.</p>
+          <div className="site-footer__socials">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                <Icon />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="site-footer__col">
@@ -47,12 +61,6 @@ function Footer() {
             <li className="site-footer__contact">
               <Mail size={16} />
               <a href="mailto:tenziaaclinictrichy@gmail.com">tenziaaclinictrichy@gmail.com</a>
-            </li>
-            <li className="site-footer__contact">
-              <Instagram size={16} />
-              <a href="https://www.instagram.com/tenziaaclinictrichy/" target="_blank" rel="noopener noreferrer">
-                @tenziaaclinictrichy
-              </a>
             </li>
           </ul>
         </div>

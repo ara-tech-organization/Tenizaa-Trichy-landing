@@ -84,8 +84,24 @@
 
 .hero__cta-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
+}
+
+@media (max-width: 520px) {
+  .hero__cta-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero__cta-row .btn {
+    width: 100%;
+    padding: 14px 12px;
+    font-size: 13.5px;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 /* Form card */
@@ -97,10 +113,10 @@
   position: relative;
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 40px 36px;
+  padding: 52px 36px;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
-  overflow: hidden;
+  overflow: visible;
   animation: floatY 7s ease-in-out infinite;
 }
 
@@ -134,7 +150,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .hero__field {
@@ -189,26 +205,103 @@
   font-size: 20px;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
+  .hero {
+    padding: 60px 0 90px;
+  }
+
+  .hero__inner {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
   .hero__inner {
     grid-template-columns: 1fr;
   }
 
+  .hero__copy {
+    text-align: center;
+  }
+
   .hero__desc {
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__highlights li {
+    justify-content: center;
+  }
+
+  .hero__cta-row {
+    justify-content: center;
   }
 
   .hero {
     padding: 48px 0 72px;
   }
+
+  .hero__title {
+    margin: 18px 0;
+  }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 0 56px;
+  }
+
+  .hero__highlights li {
+    justify-content: flex-start;
+  }
+
+  .hero__blob--one {
+    width: 300px;
+    height: 300px;
+    top: -140px;
+    right: -100px;
+  }
+
+  .hero__blob--two {
+    width: 220px;
+    height: 220px;
+    bottom: -110px;
+    left: -80px;
+  }
+
   .hero__highlights {
     grid-template-columns: 1fr;
+    margin: 24px 0 28px;
   }
 
   .hero__form-card {
     padding: 30px 22px;
+  }
+
+  .hero__form-card h2 {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .hero__desc {
+    font-size: 15.5px;
+  }
+
+  .hero__cta-row {
+    flex-direction: column;
+  }
+
+  .hero__form-card {
+    padding: 24px 16px;
+  }
+
+  .hero__field {
+    padding: 12px 14px;
   }
 }

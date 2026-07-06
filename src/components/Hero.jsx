@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { CheckCircle2, Phone, ArrowRight, User, Smartphone, Clock4, Sparkles } from 'lucide-react'
+import { CheckCircle2, Phone, ArrowRight, User, Smartphone, Mail, Sparkles } from 'lucide-react'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
+import TimePicker from './TimePicker'
 import './Hero.css'
 
 const HIGHLIGHTS = [
@@ -82,16 +83,10 @@ function Hero() {
                   <input type="tel" placeholder="Mobile Number" required />
                 </label>
                 <label className="hero__field">
-                  <Clock4 size={17} />
-                  <select defaultValue="">
-                    <option value="" disabled>
-                      Preferred Time
-                    </option>
-                    <option value="morning">Morning (9 AM &ndash; 12 PM)</option>
-                    <option value="afternoon">Afternoon (12 PM &ndash; 4 PM)</option>
-                    <option value="evening">Evening (4 PM &ndash; 8 PM)</option>
-                  </select>
+                  <Mail size={17} />
+                  <input type="email" placeholder="Email Address" required />
                 </label>
+                <TimePicker required />
                 <button type="submit" className="btn btn-primary hero__submit">
                   Get My Consultation <ArrowRight size={17} />
                 </button>
