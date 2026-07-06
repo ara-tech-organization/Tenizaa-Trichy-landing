@@ -1,0 +1,133 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.site-header__logo img {
+  height: 44px;
+  width: auto;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+}
+
+.site-header__nav a {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
+  position: relative;
+  padding: 6px 2px;
+}
+
+.site-header__nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.site-header__nav a:hover::after,
+.site-header__nav a.is-active::after {
+  width: 100%;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.site-header__call {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  white-space: nowrap;
+}
+
+.site-header__cta {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+
+.site-header__toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  padding: 4px;
+}
+
+.site-header__mobile {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .site-header__nav,
+  .site-header__call {
+    display: none;
+  }
+
+  .site-header__cta {
+    display: none;
+  }
+
+  .site-header__toggle {
+    display: flex;
+  }
+
+  .site-header__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 20px 20px;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .site-header__mobile a:not(.btn) {
+    padding: 12px 4px;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-header__mobile .btn {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header__logo img {
+    height: 34px;
+  }
+}

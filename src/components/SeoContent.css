@@ -1,0 +1,132 @@
+.seo {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.seo__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.seo__copy h2 {
+  font-size: clamp(28px, 3.6vw, 38px);
+  font-weight: 700;
+  margin: 18px 0 22px;
+  letter-spacing: -0.02em;
+}
+
+.seo__copy p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.seo__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.seo__leaf {
+  position: absolute;
+  color: var(--primary);
+  opacity: 0.35;
+}
+
+.seo__leaf--one {
+  top: -24px;
+  left: 10px;
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.seo__leaf--two {
+  bottom: -10px;
+  right: 20px;
+  color: var(--lime);
+  animation: floatY 8s ease-in-out infinite reverse;
+}
+
+.seo__card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 30px;
+  box-shadow: var(--shadow-lg);
+}
+
+.seo__card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.seo__search-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--body);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.seo__search-row:hover {
+  transform: translateX(6px);
+  box-shadow: var(--shadow-sm);
+}
+
+.seo__search-row svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.seo__card-footer {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seo__card-footer span {
+  font-size: 12.5px;
+  color: var(--body);
+}
+
+.seo__card-footer strong {
+  font-size: 17px;
+  color: var(--primary-darker);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .seo__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .seo__visual {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .seo {
+    padding: 64px 0;
+  }
+}
