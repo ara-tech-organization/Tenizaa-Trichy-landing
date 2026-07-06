@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Target, Flame, Ruler, Scale, Apple, Footprints, Activity, Check } from 'lucide-react'
+import { Target, Flame, Ruler, Scale, Apple, Footprints, Activity, Check, ChevronDown } from 'lucide-react'
 import Reveal from './Reveal'
 import './Programs.css'
 
@@ -49,8 +49,23 @@ const PROGRAMS = [
 
 function Programs() {
   const [active, setActive] = useState(0)
+  const [openIndex, setOpenIndex] = useState(0)
   const current = PROGRAMS[active]
   const CurrentIcon = current.icon
+
+  const renderChips = (program) => (
+    <>
+      {program.chipsLabel && <span className="programs__chips-label">{program.chipsLabel}</span>}
+      <ul className="programs__chips">
+        {program.chips.map((chip) => (
+          <li key={chip}>
+            <Check size={14} strokeWidth={2.6} />
+            {chip}
+          </li>
+        ))}
+      </ul>
+    </>
+  )
 
   return (
     <section id="programs" className="programs">
@@ -87,22 +102,40 @@ function Programs() {
             <h3>{current.title}</h3>
             <p>{current.desc}</p>
 
-            {current.chips && (
-              <>
-                {current.chipsLabel && <span className="programs__chips-label">{current.chipsLabel}</span>}
-                <ul className="programs__chips">
-                  {current.chips.map((chip) => (
-                    <li key={chip}>
-                      <Check size={14} strokeWidth={2.6} />
-                      {chip}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
+            {current.chips && renderChips(current)}
 
             {current.note && <p className="programs__note">{current.note}</p>}
           </div>
+        </Reveal>
+
+        <Reveal as="div" className="programs__accordion">
+          {PROGRAMS.map((program, i) => {
+            const Icon = program.icon
+            const isOpen = i === openIndex
+            return (
+              <div key={program.title} className={`programs__acc-item ${isOpen ? 'is-open' : ''}`}>
+                <button
+                  type="button"
+                  className="programs__acc-header"
+                  onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                >
+                  <span className="programs__tab-icon">
+                    <Icon size={19} strokeWidth={1.8} />
+                  </span>
+                  <span className="programs__acc-title">{program.title}</span>
+                  <ChevronDown size={18} className="programs__acc-chevron" />
+                </button>
+
+                {isOpen && (
+                  <div className="programs__acc-body">
+                    <p>{program.desc}</p>
+                    {program.chips && renderChips(program)}
+                    {program.note && <p className="programs__note">{program.note}</p>}
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </Reveal>
       </div>
     </section>
