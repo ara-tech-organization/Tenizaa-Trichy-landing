@@ -1,8 +1,15 @@
 .hero {
   position: relative;
   padding: 76px 0 110px;
-  overflow: hidden;
   background: var(--bg-soft);
+}
+
+.hero__blob-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero__blob {
@@ -183,6 +190,12 @@
   font-size: 14.5px;
   width: 100%;
   color: var(--ink);
+}
+
+.hero__form-error {
+  font-size: 13px;
+  color: #d92d20;
+  margin: -6px 0 0;
 }
 
 .hero__submit {

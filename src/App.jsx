@@ -11,10 +11,15 @@ import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 import FloatingSocial from './components/FloatingSocial'
+import ThankYou from './components/ThankYou'
 import { idForPath, scrollToId } from './utils/sectionNav'
 
 function App() {
+  const isThankYou = window.location.pathname.replace(/\/$/, '').endsWith('/thank-you')
+
   useEffect(() => {
+    if (isThankYou) return
+
     const id = idForPath(window.location.pathname)
     if (id !== 'top') {
       requestAnimationFrame(() => scrollToId(id, { replace: true, smooth: false }))
@@ -25,7 +30,11 @@ function App() {
     }
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
-  }, [])
+  }, [isThankYou])
+
+  if (isThankYou) {
+    return <ThankYou />
+  }
 
   return (
     <>

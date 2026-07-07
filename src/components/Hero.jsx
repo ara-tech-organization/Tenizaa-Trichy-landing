@@ -12,17 +12,49 @@ const HIGHLIGHTS = [
 ]
 
 function Hero() {
-  const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    const formData = new FormData(e.target)
+
+    const payload = {
+      name: formData.get('name') || '-',
+      email: formData.get('email') || '-',
+      phone: formData.get('phone') || '-',
+      date: new Date().toISOString().slice(0, 10),
+      time: formData.get('time') || '-',
+      treatment: '-',
+      message: '-',
+      source: 'Website Form',
+    }
+
+    setError('')
+    setSubmitting(true)
+
+    try {
+      const res = await fetch('https://trichy.tenziaa.com/api/email.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      if (!res.ok) throw new Error('Request failed')
+      window.location.href = `${import.meta.env.BASE_URL}thank-you`
+    } catch {
+      setError('Something went wrong. Please try again or call us directly.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
     <section id="top" className="hero">
-      <div className="hero__blob hero__blob--one" aria-hidden="true" />
-      <div className="hero__blob hero__blob--two" aria-hidden="true" />
+      <div className="hero__blob-layer" aria-hidden="true">
+        <div className="hero__blob hero__blob--one" />
+        <div className="hero__blob hero__blob--two" />
+      </div>
 
       <div className="container hero__inner">
         <div className="hero__copy">
@@ -66,32 +98,25 @@ function Hero() {
             <h2>Start Your Weight Loss Journey Today</h2>
             <p>Fill in your details and our wellness expert will contact you within 30 minutes during clinic hours.</p>
 
-            {submitted ? (
-              <div className="hero__form-success">
-                <CheckCircle2 size={40} strokeWidth={1.8} />
-                <h3>Thank you!</h3>
-                <p>Our wellness expert will reach out to you shortly.</p>
-              </div>
-            ) : (
-              <form className="hero__form" onSubmit={handleSubmit}>
-                <label className="hero__field">
-                  <User size={17} />
-                  <input type="text" placeholder="Full Name" required />
-                </label>
-                <label className="hero__field">
-                  <Smartphone size={17} />
-                  <input type="tel" placeholder="Mobile Number" required />
-                </label>
-                <label className="hero__field">
-                  <Mail size={17} />
-                  <input type="email" placeholder="Email Address" required />
-                </label>
-                <TimePicker required />
-                <button type="submit" className="btn btn-primary hero__submit">
-                  Get My Consultation <ArrowRight size={17} />
-                </button>
-              </form>
-            )}
+            <form className="hero__form" onSubmit={handleSubmit}>
+              <label className="hero__field">
+                <User size={17} />
+                <input type="text" name="name" placeholder="Full Name" required />
+              </label>
+              <label className="hero__field">
+                <Smartphone size={17} />
+                <input type="tel" name="phone" placeholder="Mobile Number" required />
+              </label>
+              <label className="hero__field">
+                <Mail size={17} />
+                <input type="email" name="email" placeholder="Email Address" required />
+              </label>
+              <TimePicker required />
+              {error && <p className="hero__form-error">{error}</p>}
+              <button type="submit" className="btn btn-primary hero__submit" disabled={submitting}>
+                {submitting ? 'Submitting…' : 'Get My Consultation'} <ArrowRight size={17} />
+              </button>
+            </form>
           </div>
         </div>
       </div>

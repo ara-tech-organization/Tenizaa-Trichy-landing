@@ -38,11 +38,6 @@ function TimePicker({ required }) {
       ? `${hour}:${String(minute).padStart(2, '0')} ${period}`
       : ''
 
-  const hiddenValue =
-    hour !== null && minute !== null
-      ? `${String(period === 'PM' && hour !== 12 ? hour + 12 : period === 'AM' && hour === 12 ? 0 : hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`
-      : ''
-
   const handleHourPick = (h) => {
     setHour(h)
     setStage('minute')
@@ -68,7 +63,17 @@ function TimePicker({ required }) {
           required={required}
         />
       </label>
-      <input type="hidden" name="preferredTime" value={hiddenValue} />
+      <input type="hidden" name="time" value={displayValue} />
+
+      {open && (
+        <div
+          className="time-picker__backdrop"
+          onClick={() => {
+            setOpen(false)
+            setStage('hour')
+          }}
+        />
+      )}
 
       {open && (
         <div className="time-picker__panel">

@@ -1,0 +1,52 @@
+.thank-you {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-soft);
+  padding: 60px 0;
+}
+
+.thank-you__inner {
+  max-width: 560px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thank-you__icon {
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.thank-you h1 {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.thank-you p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--body);
+  margin-bottom: 32px;
+}
+
+.thank-you__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .thank-you__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .thank-you__actions .btn {
+    justify-content: center;
+  }
+}
