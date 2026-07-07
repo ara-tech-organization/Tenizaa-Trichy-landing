@@ -3,10 +3,12 @@
   inset: 0;
   background: rgba(15, 23, 20, 0.55);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   z-index: 1000;
-  padding: 16px;
+  padding: 40px 16px;
   animation: popupFadeIn 0.25s ease;
 }
 
@@ -17,6 +19,8 @@
   padding: 40px 32px;
   max-width: 420px;
   width: 100%;
+  flex-shrink: 0;
+  margin: auto 0;
   box-shadow: var(--shadow-lg);
   animation: popupSlideUp 0.3s ease;
 }
@@ -87,6 +91,10 @@
 }
 
 @media (max-width: 480px) {
+  .popup__backdrop {
+    padding: 24px 12px;
+  }
+
   .popup__card {
     padding: 30px 20px;
   }

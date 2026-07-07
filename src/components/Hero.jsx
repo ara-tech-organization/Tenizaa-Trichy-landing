@@ -91,7 +91,7 @@ function Hero() {
 
           <div className="hero__cta-row">
             <a href={pathForId('consult')} className="btn btn-primary" onClick={(e) => handleSectionNavClick(e, 'consult')}>
-              Book Your Free Consultation <ArrowRight size={17} />
+              Book a Consultation <ArrowRight size={17} />
             </a>
             <a href="tel:+919080808183" className="btn btn-outline">
               <Phone size={17} /> Call Our Wellness Experts

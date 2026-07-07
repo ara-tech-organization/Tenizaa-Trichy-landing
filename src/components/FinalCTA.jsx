@@ -14,11 +14,11 @@ function FinalCTA() {
           <h2>Ready to Start Your Weight Loss Journey?</h2>
           <p>
             Achieve your health goals with personalized guidance from experienced wellness professionals.
-            Book your free consultation today and take the first step toward a healthier lifestyle.
+            Book a consultation today and take the first step toward a healthier lifestyle.
           </p>
           <div className="final-cta__actions">
             <a href={pathForId('consult')} className="btn btn-light" onClick={(e) => handleSectionNavClick(e, 'consult')}>
-              <CheckCircle2 size={18} /> Book Your Free Consultation
+              <CheckCircle2 size={18} /> Book a Consultation
             </a>
             <a href="tel:+919080808183" className="btn btn-ghost">
               <PhoneCall size={18} /> Talk to Our Wellness Expert

@@ -6,6 +6,7 @@ import Programs from './components/Programs'
 import Benefits from './components/Benefits'
 import SeoContent from './components/SeoContent'
 import Journey from './components/Journey'
+import Transformations from './components/Transformations'
 import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
@@ -56,6 +57,7 @@ function App() {
         <Benefits />
         <SeoContent />
         <Journey />
+        <Transformations />
         <Testimonials />
         <FAQ />
         <FinalCTA />

@@ -5,7 +5,7 @@ import './Journey.css'
 const STEPS = [
   {
     icon: MessageCircle,
-    title: 'Free Consultation',
+    title: 'Consultation',
     desc: 'Meet our wellness expert to discuss your health history, lifestyle, and weight loss goals.',
   },
   {

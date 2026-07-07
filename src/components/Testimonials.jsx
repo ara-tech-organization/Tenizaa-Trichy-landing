@@ -5,11 +5,11 @@ import './Testimonials.css'
 const REVIEWS = [
   {
     text: 'The team explained everything clearly and gave me a personalized diet plan that suited my daily routine. I finally found a weight loss program I could follow comfortably.',
-    author: 'Client, Trichy',
+    author: 'Nandhini, Trichy',
   },
   {
     text: 'The wellness experts regularly tracked my progress and motivated me throughout my journey. The personalized support made a huge difference.',
-    author: 'Client, Trichy',
+    author: 'Mohamed Imran, Trichy',
   },
 ]
 
@@ -33,7 +33,7 @@ function Testimonials() {
               </div>
               <blockquote>{review.text}</blockquote>
               <figcaption>
-                <span className="testimonials__avatar">C</span>
+                <span className="testimonials__avatar">{review.author.charAt(0)}</span>
                 <span>&ndash; {review.author}</span>
               </figcaption>
             </Reveal>

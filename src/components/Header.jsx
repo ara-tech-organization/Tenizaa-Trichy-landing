@@ -67,7 +67,7 @@ function Header() {
             className="btn btn-primary site-header__cta"
             onClick={(e) => handleSectionNavClick(e, 'consult')}
           >
-            Book Free Consultation
+            Book a Consultation
           </a>
           <button
             type="button"
@@ -102,7 +102,7 @@ function Header() {
               setOpen(false)
             }}
           >
-            Book Free Consultation
+            Book a Consultation
           </a>
         </div>
       )}
