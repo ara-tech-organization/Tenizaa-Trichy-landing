@@ -33,7 +33,16 @@ function App() {
   }, [isThankYou])
 
   if (isThankYou) {
-    return <ThankYou />
+    return (
+      <>
+        <Header />
+        <main>
+          <ThankYou />
+        </main>
+        <Footer />
+        <FloatingSocial />
+      </>
+    )
   }
 
   return (
