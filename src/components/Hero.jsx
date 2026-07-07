@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { CheckCircle2, Phone, ArrowRight, User, Smartphone, Mail, Sparkles } from 'lucide-react'
+import { CheckCircle2, Phone, ArrowRight, User, Smartphone, MapPin, CalendarDays, Sparkles } from 'lucide-react'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
+import { validateLeadForm } from '../utils/formValidation'
 import TimePicker from './TimePicker'
 import './Hero.css'
 
@@ -19,11 +20,17 @@ function Hero() {
     e.preventDefault()
     const formData = new FormData(e.target)
 
+    const validationError = validateLeadForm(formData)
+    if (validationError) {
+      setError(validationError)
+      return
+    }
+
     const payload = {
       name: formData.get('name') || '-',
-      email: formData.get('email') || '-',
+      city: formData.get('city') || '-',
       phone: formData.get('phone') || '-',
-      date: new Date().toISOString().slice(0, 10),
+      date: formData.get('date') || new Date().toISOString().slice(0, 10),
       time: formData.get('time') || '-',
       treatment: '-',
       message: '-',
@@ -108,8 +115,12 @@ function Hero() {
                 <input type="tel" name="phone" placeholder="Mobile Number" required />
               </label>
               <label className="hero__field">
-                <Mail size={17} />
-                <input type="email" name="email" placeholder="Email Address" required />
+                <MapPin size={17} />
+                <input type="text" name="city" placeholder="City" required />
+              </label>
+              <label className="hero__field">
+                <CalendarDays size={17} />
+                <input type="date" name="date" required />
               </label>
               <TimePicker required />
               {error && <p className="hero__form-error">{error}</p>}

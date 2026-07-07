@@ -13,7 +13,7 @@ function pointOnCircle(index, total, radius) {
   }
 }
 
-function TimePicker({ required }) {
+function TimePicker({ required, openUpward }) {
   const [open, setOpen] = useState(false)
   const [stage, setStage] = useState('hour')
   const [hour, setHour] = useState(null)
@@ -53,7 +53,7 @@ function TimePicker({ required }) {
 
   return (
     <div className="time-picker" ref={wrapRef}>
-      <label className="hero__field time-picker__field" onClick={() => setOpen((v) => !v)}>
+      <label className="hero__field time-picker__field">
         <Clock4 size={17} />
         <input
           type="text"
@@ -62,6 +62,14 @@ function TimePicker({ required }) {
           value={displayValue}
           required={required}
         />
+        <button
+          type="button"
+          className="time-picker__icon-btn"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Open time picker"
+        >
+          <Clock4 size={16} />
+        </button>
       </label>
       <input type="hidden" name="time" value={displayValue} />
 
@@ -76,7 +84,7 @@ function TimePicker({ required }) {
       )}
 
       {open && (
-        <div className="time-picker__panel">
+        <div className={`time-picker__panel ${openUpward ? 'time-picker__panel--up' : ''}`}>
           <div className="time-picker__header">
             <span
               className={stage === 'hour' ? 'is-active' : ''}

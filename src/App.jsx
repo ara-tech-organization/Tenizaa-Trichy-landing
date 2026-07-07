@@ -12,6 +12,7 @@ import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 import FloatingSocial from './components/FloatingSocial'
 import ThankYou from './components/ThankYou'
+import Popup from './components/Popup'
 import { idForPath, scrollToId } from './utils/sectionNav'
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
       </main>
       <Footer />
       <FloatingSocial />
+      <Popup />
     </>
   )
 }
