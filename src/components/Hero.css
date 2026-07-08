@@ -203,6 +203,11 @@
   -webkit-min-logical-width: 0;
 }
 
+.hero__field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(59%) sepia(46%) saturate(1200%) hue-rotate(45deg) brightness(95%) contrast(92%);
+  cursor: pointer;
+}
+
 .hero__form-error {
   font-size: 13px;
   color: #d92d20;
