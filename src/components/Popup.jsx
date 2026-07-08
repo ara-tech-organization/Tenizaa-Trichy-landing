@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { X, ArrowRight, User, Smartphone, MapPin, CalendarDays, Sparkles } from 'lucide-react'
 import { validateLeadForm } from '../utils/formValidation'
-import TimePicker from './TimePicker'
 import './Popup.css'
 
 function Popup() {
@@ -32,7 +31,6 @@ function Popup() {
       phone: formData.get('phone') || '-',
       city: formData.get('city') || '-',
       date: formData.get('date') || new Date().toISOString().slice(0, 10),
-      time: formData.get('time') || '-',
       treatment: '-',
       message: '-',
       source: 'Popup Form',
@@ -90,13 +88,12 @@ function Popup() {
               </label>
               <label className="hero__field">
                 <MapPin size={17} />
-                <input type="text" name="city" placeholder="City" required />
+                <input type="text" name="city" placeholder="Enter your city" required />
               </label>
               <label className="hero__field">
                 <CalendarDays size={17} />
                 <input type="date" name="date" required />
               </label>
-              <TimePicker required openUpward />
               {error && <p className="hero__form-error">{error}</p>}
               <button type="submit" className="btn btn-primary popup__submit" disabled={submitting}>
                 {submitting ? 'Submitting…' : 'Get My Consultation'} <ArrowRight size={17} />
