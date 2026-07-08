@@ -118,12 +118,15 @@
 
 .hero__form-card {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 52px 36px;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
-  overflow: visible;
+  overflow: hidden;
   animation: floatY 7s ease-in-out infinite;
 }
 
@@ -164,6 +167,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 14px 16px;
@@ -189,7 +195,12 @@
   font-family: var(--font);
   font-size: 14.5px;
   width: 100%;
+  min-width: 0;
   color: var(--ink);
+}
+
+.hero__field input[type="date"] {
+  -webkit-min-logical-width: 0;
 }
 
 .hero__form-error {
@@ -263,6 +274,7 @@
 @media (max-width: 480px) {
   .hero {
     padding: 40px 0 56px;
+    overflow-x: hidden;
   }
 
   .hero__highlights li {
@@ -316,5 +328,10 @@
 
   .hero__field {
     padding: 12px 14px;
+  }
+
+  .hero__field input,
+  .hero__field select {
+    font-size: 13.5px;
   }
 }
