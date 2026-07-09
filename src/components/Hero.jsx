@@ -30,8 +30,6 @@ function Hero() {
       city: formData.get('city') || '-',
       phone: formData.get('phone') || '-',
       date: formData.get('date') || new Date().toISOString().slice(0, 10),
-      treatment: '-',
-      message: '-',
       source: 'Website Form',
     }
 
@@ -106,7 +104,7 @@ function Hero() {
             <form className="hero__form" onSubmit={handleSubmit}>
               <label className="hero__field">
                 <User size={17} />
-                <input type="text" name="name" placeholder="Full Name" required />
+                <input type="text" name="name" placeholder="Full Name" pattern="[A-Za-z\s]+" title="Only letters are allowed" required />
               </label>
               <label className="hero__field">
                 <Smartphone size={17} />
@@ -114,7 +112,7 @@ function Hero() {
               </label>
               <label className="hero__field">
                 <MapPin size={17} />
-                <input type="text" name="city" placeholder="Enter your city" required />
+                <input type="text" name="city" placeholder="Enter your city" pattern="[A-Za-z\s]+" title="Only letters are allowed" required />
               </label>
               <label className="hero__field">
                 <CalendarDays size={17} />
