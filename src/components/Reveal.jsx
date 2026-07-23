@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 
-function Reveal({ as: Tag = 'div', className = '', delay = 0, scale = false, children }) {
+function baseClass({ scale, dir }) {
+  if (scale) return 'reveal-scale'
+  if (dir === 'left') return 'reveal-dir reveal-dir--left'
+  if (dir === 'right') return 'reveal-dir reveal-dir--right'
+  return 'reveal'
+}
+
+function Reveal({ as: Tag = 'div', className = '', delay = 0, scale = false, dir = 'up', children, ...rest }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -27,8 +34,9 @@ function Reveal({ as: Tag = 'div', className = '', delay = 0, scale = false, chi
   return (
     <Tag
       ref={ref}
-      className={`${scale ? 'reveal-scale' : 'reveal'} ${visible ? 'is-visible' : ''} ${className}`}
+      className={`${baseClass({ scale, dir })} ${visible ? 'is-visible' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
+      {...rest}
     >
       {children}
     </Tag>

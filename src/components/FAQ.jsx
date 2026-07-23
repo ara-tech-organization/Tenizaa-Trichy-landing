@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import Reveal from './Reveal'
+import SplitText from './SplitText'
+import Eyebrow from './Eyebrow'
 import './FAQ.css'
 
 function FAQDoll() {
@@ -17,40 +19,36 @@ function FAQDoll() {
 
 const FAQS = [
   {
-    q: 'Which is the best weight loss clinic in Trichy?',
-    a: 'Tenziaa Wellness Clinic offers personalized weight loss programs, expert diet consultation, body composition analysis, and non-surgical wellness solutions tailored to individual goals.',
+    q: 'What treatments does Tenziaa Trichy offer?',
+    a: 'We offer weight loss and slimming programs, fat reduction and body contouring, plus skin treatments like Hydrafacial, skin rejuvenation, brightening and anti-aging, and hair treatments including laser hair reduction and hair-fall care.',
   },
   {
-    q: 'Do you provide personalized diet plans?',
-    a: 'Yes. Every client receives a customized nutrition plan based on their body composition, lifestyle, and health objectives.',
+    q: 'Are your treatments non-surgical and pain-free?',
+    a: 'Yes. Our weight loss, skin, and hair treatments follow a non-surgical, pain-free philosophy using advanced, clinically guided technology with minimal downtime.',
+  },
+  {
+    q: 'Do you provide personalized diet and treatment plans?',
+    a: 'Yes. Every client begins with a proper diagnostic assessment, so their treatment and diet plan matches their body, skin, or hair goals precisely — never a one-size-fits-all package.',
   },
   {
     q: 'Is the weight loss program safe?',
-    a: 'Yes. Our programs use non-surgical and non-invasive approaches supervised by trained wellness professionals.',
+    a: 'Yes. Our programs use non-surgical, non-invasive approaches supervised by certified wellness specialists, combined with customized diet and continuous nutritionist support.',
   },
   {
-    q: 'Do I need to follow a crash diet?',
-    a: 'No. We focus on balanced nutrition and sustainable lifestyle changes rather than restrictive crash diets.',
+    q: 'How does laser hair reduction work?',
+    a: 'Laser hair reduction targets unwanted hair at the root for smoother, longer-lasting results. It begins with a skin and hair assessment, followed by targeted sessions customized to the treatment area.',
   },
   {
-    q: 'What is Body Composition Analysis (BCA)?',
-    a: 'BCA measures body fat percentage, muscle mass, BMI, hydration, and other important health indicators to create a personalized weight loss strategy.',
+    q: 'What skin concerns can you treat?',
+    a: 'We address dull skin, pigmentation, dark spots, uneven tone, fine lines, and wrinkles through Hydrafacial, skin rejuvenation, skin brightening, and anti-aging treatments tailored to your skin type.',
   },
   {
-    q: 'Can I reduce belly fat?',
-    a: 'Our personalized fat reduction and wellness programs are designed to support overall fat loss, including common problem areas such as the abdomen, when combined with nutrition and lifestyle guidance.',
+    q: 'How many sessions will I need?',
+    a: 'It depends on your goals and current condition. After your diagnostic assessment, our specialists recommend a suitable session plan and monitor your progress throughout.',
   },
   {
-    q: 'How long does a weight loss program take?',
-    a: 'The duration depends on your current body composition and personal goals. Our wellness experts will recommend a suitable plan during your consultation.',
-  },
-  {
-    q: 'Do you provide follow-up support?',
-    a: 'Yes. Regular progress reviews, nutrition guidance, and lifestyle coaching are included throughout your program.',
-  },
-  {
-    q: 'Where is Tenziaa Wellness Clinic located in Trichy?',
-    a: 'Our clinic is conveniently located in Thillai Nagar Trichy, making it easy to access personalized weight loss and wellness services. Contact us for directions or to schedule your consultation.',
+    q: 'Where is Tenziaa Wellness & Aesthetic Clinic located in Trichy?',
+    a: 'We are conveniently located at NSA Arcade, D83, 8th Cross St, Thillai Nagar, Tiruchirappalli — easily accessible across Trichy. Contact us for directions or to schedule your consultation.',
   },
 ]
 
@@ -61,8 +59,8 @@ function FAQ() {
     <section id="faq" className="faq">
       <div className="container faq__inner">
         <Reveal as="div" className="faq__intro">
-          <span className="eyebrow">Got Questions?</span>
-          <h2>Frequently Asked Questions</h2>
+          <Eyebrow text="Got Questions?" />
+          <SplitText as="h2" parts={[{ text: 'Frequently Asked Questions' }]} />
           <p>Everything you need to know before starting your weight loss journey with Tenziaa.</p>
           <div className="faq__intro-icon">
             <FAQDoll />

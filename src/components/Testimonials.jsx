@@ -1,15 +1,20 @@
 import { Star, Quote } from 'lucide-react'
 import Reveal from './Reveal'
+import SectionHead from './SectionHead'
 import './Testimonials.css'
 
 const REVIEWS = [
   {
-    text: 'The team explained everything clearly and gave me a personalized diet plan that suited my daily routine. I finally found a weight loss program I could follow comfortably.',
-    author: 'Nandhini, Trichy',
+    text: 'I lost 2kgs within 3 weeks, peaceful therapy, thank you Tenziaa.',
+    author: 'Karthikeyan Kartikeyan',
   },
   {
-    text: 'The wellness experts regularly tracked my progress and motivated me throughout my journey. The personalized support made a huge difference.',
-    author: 'Mohamed Imran, Trichy',
+    text: 'They provide customized treatment and a customized diet. Thank you Tenziaa for your care and support with my weight loss.',
+    author: 'Prabhakaran R',
+  },
+  {
+    text: 'The staff is amazing, everyone is super friendly. I lost 15 pounds in a month.',
+    author: 'Thamizh',
   },
 ]
 
@@ -17,14 +22,21 @@ function Testimonials() {
   return (
     <section id="reviews" className="testimonials">
       <div className="container">
-        <Reveal as="div" className="section-head">
-          <span className="eyebrow">Client Stories</span>
-          <h2>What Our Clients Say</h2>
-        </Reveal>
+        <SectionHead
+          eyebrow="Client Testimonials"
+          title="What Our Trichy Clients Say"
+          desc="Real stories from real clients across our weight loss, skin, and hair programs."
+        />
 
         <div className="testimonials__grid">
           {REVIEWS.map((review, i) => (
-            <Reveal as="figure" key={review.author + i} delay={i * 130} className="testimonials__card">
+            <Reveal
+              as="figure"
+              key={review.author + i}
+              delay={(i % 3) * 120}
+              dir={i % 3 === 0 ? 'left' : i % 3 === 2 ? 'right' : 'up'}
+              className="testimonials__card"
+            >
               <Quote className="testimonials__quote-icon" size={40} strokeWidth={1.4} />
               <div className="testimonials__stars">
                 {Array.from({ length: 5 }).map((_, s) => (

@@ -1,0 +1,135 @@
+.contact {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.contact__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  color: inherit;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+a.contact__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.contact__icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--lime-light);
+  color: var(--primary-dark);
+}
+
+.contact__label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-dark);
+}
+
+.contact__value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.contact__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px 28px;
+}
+
+.contact__address {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--body);
+}
+
+.contact__address svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.contact__socials {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.contact__socials a {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--primary-dark);
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.contact__socials a:hover {
+  transform: translateY(-3px);
+  background: var(--grad-primary);
+  color: var(--white);
+  border-color: transparent;
+}
+
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 60px 0;
+  }
+
+  .contact__grid {
+    gap: 16px;
+  }
+
+  .contact__card {
+    padding: 26px 18px;
+  }
+
+  .contact__bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+}

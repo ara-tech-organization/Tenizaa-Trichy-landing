@@ -1,37 +1,38 @@
 import { UserCheck, GraduationCap, ShieldCheck, ScanLine, LineChart, MapPin } from 'lucide-react'
 import Reveal from './Reveal'
+import SectionHead from './SectionHead'
 import './WhyChooseUs.css'
 
 const REASONS = [
   {
-    icon: UserCheck,
-    title: 'Personalized Weight Loss Programs',
-    desc: 'Every treatment plan is customized based on your body composition, metabolism, lifestyle, and weight loss goals.',
-  },
-  {
     icon: GraduationCap,
-    title: 'Experienced Wellness & Nutrition Experts',
-    desc: 'Our qualified wellness professionals and dieticians guide you with practical nutrition advice and continuous motivation throughout your journey.',
+    title: 'Certified Wellness Specialists',
+    desc: 'Certified wellness specialists with proven expertise across weight loss, skin, and hair care.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Safe Non-Surgical Fat Reduction',
-    desc: 'Achieve visible fat and inch loss through non-invasive wellness solutions without surgery or extended recovery time.',
+    icon: UserCheck,
+    title: 'Personalized Diet Plan Approach',
+    desc: 'A personalized diet plan clinic approach for every client, matched to their body, skin, or hair goals.',
   },
   {
     icon: ScanLine,
-    title: 'Body Composition Analysis (BCA)',
-    desc: 'Understand your body better with detailed analysis of body fat percentage, muscle mass, BMI, and hydration levels before starting your program.',
+    title: 'Advanced, Safe Technology',
+    desc: 'Advanced, safe technology for visible results in every session at our Trichy clinic.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Non-Surgical & Pain-Free',
+    desc: 'A non-surgical, pain-free treatment philosophy with minimal downtime and genuine comfort.',
   },
   {
     icon: LineChart,
-    title: 'Continuous Progress Monitoring',
-    desc: 'Track your progress through regular assessments and personalized plan adjustments for long-term success.',
+    title: 'Consistent Client Satisfaction',
+    desc: 'Consistent client satisfaction across our weight loss, skin, and hair programs.',
   },
   {
     icon: MapPin,
-    title: 'Convenient Trichy Location',
-    desc: 'Access professional weight management services close to you with flexible appointment scheduling.',
+    title: 'Convenient Thillai Nagar Location',
+    desc: 'A convenient Thillai Nagar location, easily accessible across Trichy.',
   },
 ]
 
@@ -39,21 +40,23 @@ function WhyChooseUs() {
   return (
     <section id="why-us" className="why">
       <div className="container">
-        <Reveal as="div" className="section-head">
-          <span className="eyebrow">Why Tenziaa</span>
-          <h2>Why Choose Tenziaa Wellness Clinic in Trichy</h2>
-          <p>
-            Finding the right weight loss clinic in Trichy is about choosing a team that understands your
-            body&mdash;not following a one-size-fits-all program. At Tenziaa, every client receives a
-            personalized wellness plan focused on safe, sustainable, and healthy weight loss.
-          </p>
-        </Reveal>
+        <SectionHead
+          eyebrow="Why Choose Tenziaa Trichy?"
+          title="Care That Understands Your Goals"
+          desc={<>From weight loss and slimming to skin and hair care, every client receives a personalized, science-backed plan &mdash; never a one-size-fits-all package.</>}
+        />
 
         <div className="why__grid">
           {REASONS.map((reason, i) => {
             const Icon = reason.icon
             return (
-              <Reveal as="div" key={reason.title} delay={i * 90} className="why__card">
+              <Reveal
+                as="div"
+                key={reason.title}
+                delay={(i % 3) * 120}
+                dir={i % 3 === 0 ? 'left' : i % 3 === 2 ? 'right' : 'up'}
+                className="why__card"
+              >
                 <div className="why__icon">
                   <Icon size={26} strokeWidth={1.8} />
                 </div>

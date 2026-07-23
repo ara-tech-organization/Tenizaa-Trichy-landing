@@ -5,11 +5,12 @@ import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import './Header.css'
 
 const NAV_LINKS = [
-  { label: 'Why Us', id: 'why-us' },
-  { label: 'Programs', id: 'programs' },
-  { label: 'Journey', id: 'journey' },
+  { label: 'About', id: 'about' },
+  { label: 'Treatments', id: 'treatments' },
+  { label: 'Gallery', id: 'results' },
   { label: 'Reviews', id: 'reviews' },
-  { label: 'FAQ', id: 'faq' },
+  { label: 'Branches', id: 'branches' },
+  { label: 'Contact', id: 'contact' },
 ]
 
 function Header() {
@@ -67,7 +68,7 @@ function Header() {
             className="btn btn-primary site-header__cta"
             onClick={(e) => handleSectionNavClick(e, 'consult')}
           >
-            Book a Consultation
+            Book Appointment
           </a>
           <button
             type="button"
@@ -102,7 +103,7 @@ function Header() {
               setOpen(false)
             }}
           >
-            Book a Consultation
+            Book Appointment
           </a>
         </div>
       )}

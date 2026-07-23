@@ -1,18 +1,19 @@
 import { CheckCircle2 } from 'lucide-react'
 import Reveal from './Reveal'
+import SectionHead from './SectionHead'
 import './Benefits.css'
 
 const BENEFITS = [
-  'Personalized Weight Loss Plans',
-  'Healthy & Sustainable Weight Loss',
-  'Non-Surgical Wellness Solutions',
-  'Customized Diet Charts',
-  'Expert Nutrition Guidance',
-  'Regular Progress Tracking',
-  'Flexible Consultation Timings',
-  'Body Composition Analysis',
-  'Lifestyle Coaching',
-  'Safe & Scientifically Guided Programs',
+  'Non-Surgical Weight Loss',
+  'Advanced Skin Care',
+  'Safe Hair Treatments',
+  'Personalized Diet Plans',
+  'Certified Wellness Specialists',
+  'Hydrafacial & Rejuvenation',
+  'Laser Hair Reduction',
+  'Body Contouring & Slimming',
+  'Anti-Aging Solutions',
+  'Pain-Free Advanced Technology',
 ]
 
 const ROW_ONE = BENEFITS.slice(0, 5)
@@ -38,10 +39,12 @@ function Benefits() {
   return (
     <section className="benefits">
       <div className="container">
-        <Reveal as="div" className="section-head">
-          <span className="eyebrow eyebrow--dark">Benefits</span>
-          <h2 className="benefits__heading">Benefits of Choosing Tenziaa</h2>
-        </Reveal>
+        <SectionHead
+          eyebrow="Benefits"
+          eyebrowClass="eyebrow--dark"
+          title="Why Clients Choose Tenziaa Trichy"
+          titleClass="benefits__heading"
+        />
       </div>
 
       <Reveal as="div" scale className="benefits__marquee">

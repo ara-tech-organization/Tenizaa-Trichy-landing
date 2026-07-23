@@ -2,13 +2,21 @@ import { useState } from 'react'
 import { CheckCircle2, Phone, ArrowRight, User, Smartphone, MapPin, CalendarDays, Sparkles } from 'lucide-react'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import { validateLeadForm } from '../utils/formValidation'
+import { WhatsAppIcon } from './BrandIcons'
+import SplitText from './SplitText'
+import Eyebrow from './Eyebrow'
 import './Hero.css'
 
+const TITLE_PARTS = [
+  { text: 'Trichy’s Wellness & Aesthetic Clinic for ' },
+  { text: 'Weight Loss, Skin & Hair', grad: true },
+]
+
 const HIGHLIGHTS = [
-  'Personalized Weight Loss Programs',
-  'Non-Surgical Fat Reduction',
-  'Expert Diet & Nutrition Guidance',
-  'Body Composition Analysis (BCA)',
+  'Non-Surgical Weight Loss & Slimming',
+  'Advanced Skin & Aesthetic Care',
+  'Safe, Pain-Free Hair Treatments',
+  'Certified Wellness Specialists',
 ]
 
 function Hero() {
@@ -61,19 +69,14 @@ function Hero() {
 
       <div className="container hero__inner">
         <div className="hero__copy">
-          <span className="eyebrow">
-            <Sparkles size={14} /> Trichy&rsquo;s Trusted Wellness Clinic
-          </span>
+          <Eyebrow icon={<Sparkles size={14} />} text="Trichy’s Wellness & Aesthetic Clinic" />
 
-          <h1 className="hero__title">
-            Best Weight Loss Clinic in Trichy for <span>Personalized Weight Loss &amp; Wellness</span>
-          </h1>
+          <SplitText as="h1" className="hero__title" parts={TITLE_PARTS} />
+
 
           <p className="hero__desc">
-            Looking for a trusted Weight Loss Clinic in Trichy? At Tenziaa Wellness Clinic, we help you
-            achieve sustainable weight loss with personalized diet plans, non-surgical fat reduction
-            programs, body composition analysis, and expert wellness guidance&mdash;designed around your
-            body, lifestyle, and health goals.
+            Discover safe, pain-free slimming treatment in Trichy along with personalized skin and hair
+            care, delivered by certified wellness specialists using advanced clinical technology.
           </p>
 
           <ul className="hero__highlights">
@@ -87,15 +90,18 @@ function Hero() {
 
           <div className="hero__cta-row">
             <a href={pathForId('consult')} className="btn btn-primary" onClick={(e) => handleSectionNavClick(e, 'consult')}>
-              Book a Consultation <ArrowRight size={17} />
+              Book Appointment <ArrowRight size={17} />
+            </a>
+            <a href="https://wa.me/919080808183" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+              <WhatsAppIcon width={17} height={17} /> WhatsApp Us
             </a>
             <a href="tel:+919080808183" className="btn btn-outline">
-              <Phone size={17} /> Call Our Wellness Experts
+              <Phone size={17} /> Call Now
             </a>
           </div>
         </div>
 
-        <div className="hero__form-wrap" id="consult">
+        <div className="hero__form-wrap">
           <div className="hero__form-card">
             <div className="hero__form-glow" aria-hidden="true" />
             <h2>Start Your Weight Loss Journey Today</h2>

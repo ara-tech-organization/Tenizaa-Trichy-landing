@@ -1,27 +1,28 @@
 import { MessageCircle, ScanLine, ClipboardList, TrendingUp, ArrowRight } from 'lucide-react'
 import Reveal from './Reveal'
+import SectionHead from './SectionHead'
 import './Journey.css'
 
 const STEPS = [
   {
     icon: MessageCircle,
     title: 'Consultation',
-    desc: 'Meet our wellness expert to discuss your health history, lifestyle, and weight loss goals.',
+    desc: 'Meet our certified specialists to discuss your weight loss, skin, or hair concerns and your goals.',
   },
   {
     icon: ScanLine,
-    title: 'Body Composition Assessment',
-    desc: 'We analyze your body fat, muscle mass, BMI, and overall body composition to understand your current health.',
+    title: 'Diagnostic Assessment',
+    desc: 'A proper body, skin, or hair assessment so your treatment matches your goals precisely.',
   },
   {
     icon: ClipboardList,
-    title: 'Personalized Weight Loss Plan',
-    desc: 'Receive a customized combination of nutrition guidance, wellness therapies, and lifestyle recommendations.',
+    title: 'Personalized Treatment Plan',
+    desc: 'Receive a customized plan combining advanced technology, therapies, and expert guidance.',
   },
   {
     icon: TrendingUp,
     title: 'Ongoing Support & Progress Tracking',
-    desc: 'Regular reviews, diet modifications, and continuous motivation help you stay on track toward your goals.',
+    desc: 'Regular reviews and continuous support help you stay on track toward visible, lasting results.',
   },
 ]
 
@@ -29,10 +30,10 @@ function Journey() {
   return (
     <section id="journey" className="journey">
       <div className="container">
-        <Reveal as="div" className="section-head">
-          <span className="eyebrow">The Process</span>
-          <h2>Your Transformation Journey</h2>
-        </Reveal>
+        <SectionHead
+          eyebrow="How It Works"
+          title="Your Journey at Tenziaa Trichy"
+        />
 
         <div className="journey__steps">
           {STEPS.map((step, i) => {

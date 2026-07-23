@@ -1,0 +1,45 @@
+.splitt {
+  /* No display override — keep the host element's natural display
+     (block for an <h1>, inline for a <span>). */
+  perspective: 400px;
+}
+
+.splitt__seg {
+  display: inline;
+}
+
+.splitt__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.splitt__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate(var(--splitt-tx, 50px), var(--splitt-ty, 0px));
+  /* Back.easeOut ≈ cubic-bezier(0.34, 1.56, 0.64, 1) */
+  transition: transform var(--splitt-duration, 1s) cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity var(--splitt-duration, 1s) ease;
+  will-change: transform, opacity;
+}
+
+.splitt.is-play .splitt__char {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Gradient highlight, matching the hero keyword styling */
+.splitt__seg--grad .splitt__char {
+  background: var(--grad-dark);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splitt__char {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

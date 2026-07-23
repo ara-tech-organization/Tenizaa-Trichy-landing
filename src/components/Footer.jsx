@@ -11,11 +11,12 @@ const SOCIALS = [
 ]
 
 const LINKS = [
-  { label: 'Why Us', id: 'why-us' },
-  { label: 'Programs', id: 'programs' },
-  { label: 'Journey', id: 'journey' },
+  { label: 'About', id: 'about' },
+  { label: 'Treatments', id: 'treatments' },
+  { label: 'Gallery', id: 'results' },
   { label: 'Reviews', id: 'reviews' },
-  { label: 'FAQ', id: 'faq' },
+  { label: 'Branches', id: 'branches' },
+  { label: 'Book Consultation', id: 'consult' },
 ]
 
 function Footer() {
@@ -24,7 +25,7 @@ function Footer() {
       <div className="container site-footer__inner">
         <div className="site-footer__brand">
           <img src={logo} alt="Tenziaa Wellness and Aesthetic Clinic" />
-          <p>Personalized weight loss &amp; wellness programs in Trichy.</p>
+          <p>Wellness &amp; aesthetic care for weight loss, skin &amp; hair in Trichy.</p>
           <div className="site-footer__socials">
             {SOCIALS.map(({ label, href, Icon }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>

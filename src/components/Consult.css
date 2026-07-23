@@ -1,0 +1,156 @@
+.consult {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background: var(--bg-soft-2);
+}
+
+.consult__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.consult__blob--one {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle at 40% 40%, var(--lime) 0%, transparent 70%);
+  top: -160px;
+  left: -120px;
+  opacity: 0.4;
+  animation: floatY 10s ease-in-out infinite;
+}
+
+.consult__blob--two {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 40% 40%, var(--accent) 0%, transparent 72%);
+  bottom: -140px;
+  right: -100px;
+  opacity: 0.22;
+  animation: floatY 12s ease-in-out infinite reverse;
+}
+
+.consult__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.consult__copy h2 {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 16px 0 18px;
+}
+
+.consult__copy p {
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 26px;
+}
+
+.consult__points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.consult__points li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.consult__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 12px no-repeat;
+}
+
+.consult__form-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-lg);
+}
+
+.consult__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.consult__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.hero__field--textarea {
+  align-items: flex-start;
+}
+
+.hero__field--textarea svg {
+  margin-top: 3px;
+}
+
+.hero__field textarea {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font);
+  font-size: 14.5px;
+  width: 100%;
+  min-width: 0;
+  color: var(--ink);
+  resize: vertical;
+}
+
+.hero__field select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.consult__submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 15px 20px;
+}
+
+@media (max-width: 900px) {
+  .consult__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 560px) {
+  .consult__row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .consult {
+    padding: 60px 0;
+  }
+
+  .consult__form-card {
+    padding: 30px 22px;
+  }
+}

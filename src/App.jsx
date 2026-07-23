@@ -1,15 +1,20 @@
 import { useEffect } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Highlights from './components/Highlights'
+import About from './components/About'
+import Treatments from './components/Treatments'
 import WhyChooseUs from './components/WhyChooseUs'
-import Programs from './components/Programs'
+import Machines from './components/Machines'
 import Benefits from './components/Benefits'
-import SeoContent from './components/SeoContent'
 import Journey from './components/Journey'
 import Transformations from './components/Transformations'
 import Testimonials from './components/Testimonials'
+import Branches from './components/Branches'
 import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
+import Consult from './components/Consult'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 import FloatingSocial from './components/FloatingSocial'
 import ThankYou from './components/ThankYou'
@@ -52,15 +57,20 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <Highlights />
+        <About />
+        <Treatments />
         <WhyChooseUs />
-        <Programs />
+        <Machines />
         <Benefits />
-        <SeoContent />
         <Journey />
         <Transformations />
         <Testimonials />
+        <Branches />
         <FAQ />
         <FinalCTA />
+        <Consult />
+        <Contact />
       </main>
       <Footer />
       <FloatingSocial />

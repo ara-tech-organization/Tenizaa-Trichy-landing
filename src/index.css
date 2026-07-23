@@ -4,6 +4,9 @@
   --primary-darker: #365710;
   --lime: #cddc39;
   --lime-light: #eef6d9;
+  --accent: #d98555;
+  --accent-dark: #b5623a;
+  --accent-soft: #fbeee2;
   --ink: #1a2411;
   --body: #56634c;
   --bg: #ffffff;
@@ -98,6 +101,11 @@ img {
   border-radius: 999px;
 }
 
+.eyebrow--accent {
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+}
+
 .section-head {
   max-width: 720px;
   margin: 0 auto 56px;
@@ -126,19 +134,18 @@ img {
   padding: 12px 24px;
   border-radius: 999px;
   border: none;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, background 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   white-space: nowrap;
 }
 
 .btn-primary {
   background: var(--grad-primary);
   color: var(--white);
-  box-shadow: 0 14px 30px rgba(111, 174, 31, 0.35);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(111, 174, 31, 0.45);
+  transform: translateY(-2px);
+  filter: brightness(1.05);
 }
 
 .btn-outline {
@@ -149,8 +156,9 @@ img {
 
 .btn-outline:hover {
   border-color: var(--primary);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-2px);
 }
 
 .btn-light {
@@ -159,8 +167,18 @@ img {
 }
 
 .btn-light:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+  filter: brightness(0.98);
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: var(--white);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
 }
 
 /* Scroll reveal */
@@ -185,6 +203,31 @@ img {
 .reveal-scale.is-visible {
   opacity: 1;
   transform: scale(1);
+}
+
+/* Directional reveals (fadeInLeft / fadeInRight) */
+.reveal-dir {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-dir--left { transform: translateX(-46px); }
+.reveal-dir--right { transform: translateX(46px); }
+
+.reveal-dir.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-scale,
+  .reveal-dir {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 @keyframes floatY {

@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionHead from './SectionHead'
 import CompareSlider from './CompareSlider'
 import './Transformations.css'
 import before1 from '../assets/Before1.png'
@@ -18,11 +19,11 @@ function Transformations() {
   return (
     <section id="results" className="transformations">
       <div className="container">
-        <Reveal as="div" className="section-head">
-          <span className="eyebrow">Real Transformations</span>
-          <h2>See the Difference</h2>
-          <p>Drag the slider to reveal genuine before &amp; after results from our personalized weight loss programs.</p>
-        </Reveal>
+        <SectionHead
+          eyebrow="Before & After Gallery"
+          title="Real Transformations, Real Results"
+          desc={<>Real transformations from real Trichy clients &mdash; explore visible results across our weight loss, skin, and hair restoration programs. Drag each slider to reveal the difference.</>}
+        />
 
         <div className="transformations__grid">
           {PAIRS.map((pair, i) => (
