@@ -80,19 +80,6 @@
   color: var(--primary-dark);
 }
 
-/* Appointment date gets a visible label — a bare date input reads as "dd-mm-yyyy" */
-.popup__date {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.popup__date-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--primary-dark);
-}
-
 @keyframes popupFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
