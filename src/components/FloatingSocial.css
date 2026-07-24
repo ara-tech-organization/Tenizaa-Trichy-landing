@@ -1,62 +1,134 @@
-.floating-social {
+/* Vertical contact dock pinned to the right edge */
+.fdock {
   position: fixed;
-  bottom: 22px;
-  z-index: 60;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 90;
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 48px;
+  border-radius: 14px 0 0 14px;
+  overflow: hidden;
+  box-shadow: -4px 8px 26px rgba(26, 36, 17, 0.22);
+}
+
+/* --- Back to top --- */
+.fdock__top {
+  display: grid;
+  place-items: center;
+  height: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--white);
+  background: #1c2b12;
+  opacity: 0;
+  transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, background 0.3s ease;
+}
+
+.fdock__top.is-visible {
+  height: 44px;
+  opacity: 1;
+}
+
+.fdock__top:hover {
+  background: #2a4019;
+}
+
+/* --- Contact Us tab (vertical text) — opens the appointment popup --- */
+.fdock__contact {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 0 18px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
   color: var(--white);
-  box-shadow: var(--shadow-lg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--grad-primary);
+  transition: filter 0.3s ease;
 }
 
-.floating-social:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: var(--shadow-lg), 0 0 0 6px rgba(111, 174, 31, 0.18);
+.fdock__contact:hover {
+  filter: brightness(1.07);
 }
 
-.floating-social--left {
-  left: 20px;
+.fdock__contact-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
-.floating-social--right {
-  right: 20px;
+/* --- Action buttons --- */
+.fdock__btn {
+  display: grid;
+  place-items: center;
+  height: 46px;
+  color: var(--white);
+  transition: filter 0.3s ease;
 }
 
-.floating-social--call {
-  background: var(--primary);
-  animation: floating-social-pulse 2.4s ease-in-out infinite;
+.fdock__btn:hover {
+  filter: brightness(1.08);
 }
 
-.floating-social--whatsapp {
-  background: var(--primary);
-  animation: floating-social-pulse 2.4s ease-in-out infinite;
+.fdock__btn--call {
+  background: var(--primary-dark);
 }
 
-@keyframes floating-social-pulse {
-  0%, 100% {
-    box-shadow: var(--shadow-lg), 0 0 0 0 rgba(111, 174, 31, 0.45);
+.fdock__btn--whatsapp {
+  background: #25d366;
+}
+
+.fdock :focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fdock__top {
+    transition: none;
   }
-  50% {
-    box-shadow: var(--shadow-lg), 0 0 0 10px rgba(111, 174, 31, 0);
+}
+
+@media (max-width: 768px) {
+  .fdock {
+    width: 42px;
+  }
+
+  .fdock__contact {
+    padding: 13px 0 15px;
+    gap: 8px;
+  }
+
+  .fdock__contact-text {
+    font-size: 12px;
+  }
+
+  .fdock__btn {
+    height: 42px;
+  }
+
+  .fdock__top.is-visible {
+    height: 40px;
   }
 }
 
-@media (max-width: 480px) {
-  .floating-social {
-    width: 48px;
-    height: 48px;
-    bottom: 16px;
+/* Short screens: drop the label so the dock never runs off-screen */
+@media (max-height: 560px) {
+  .fdock__contact-text {
+    display: none;
   }
 
-  .floating-social--left {
-    left: 14px;
-  }
-
-  .floating-social--right {
-    right: 14px;
+  .fdock__contact {
+    padding: 13px 0;
   }
 }

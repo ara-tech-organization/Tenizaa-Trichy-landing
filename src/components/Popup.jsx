@@ -3,6 +3,11 @@ import { X, ArrowRight, User, Smartphone, MapPin, CalendarDays, Sparkles } from 
 import { validateLeadForm } from '../utils/formValidation'
 import './Popup.css'
 
+const TODAY = new Date().toISOString().slice(0, 10)
+
+// Any component can open the appointment popup by firing this on `window`.
+export const OPEN_APPOINTMENT = 'tenziaa:open-appointment'
+
 function Popup() {
   const [visible, setVisible] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -12,6 +17,18 @@ function Popup() {
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 1200)
     return () => clearTimeout(timer)
+  }, [])
+
+  // Opened on demand by the floating "Contact Us" tab. Reset back to the form
+  // so a reopen after a successful submit isn't stuck on the thank-you state.
+  useEffect(() => {
+    const open = () => {
+      setSuccess(false)
+      setError('')
+      setVisible(true)
+    }
+    window.addEventListener(OPEN_APPOINTMENT, open)
+    return () => window.removeEventListener(OPEN_APPOINTMENT, open)
   }, [])
 
   const close = () => setVisible(false)
@@ -72,8 +89,8 @@ function Popup() {
             <span className="eyebrow popup__eyebrow">
               <Sparkles size={14} /> Trichy&rsquo;s Trusted Wellness Clinic
             </span>
-            <h2>Start Your Weight Loss Journey Today</h2>
-            <p>Leave your details and our wellness expert will call you back.</p>
+            <h2>Book Your Appointment</h2>
+            <p>Leave your details and our wellness expert will call you back to confirm your slot.</p>
 
             <form className="popup__form" onSubmit={handleSubmit}>
               <label className="hero__field">
@@ -90,7 +107,14 @@ function Popup() {
               </label>
               <label className="hero__field">
                 <CalendarDays size={17} />
-                <input type="date" name="date" required />
+                {/* min = today, so a past appointment date can't be picked */}
+                <input
+                  type="date"
+                  name="date"
+                  min={TODAY}
+                  aria-label="Preferred appointment date"
+                  required
+                />
               </label>
               {error && <p className="hero__form-error">{error}</p>}
               <button type="submit" className="btn btn-primary popup__submit" disabled={submitting}>
