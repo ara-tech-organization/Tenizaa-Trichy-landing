@@ -4,8 +4,11 @@
   overflow: hidden;
 }
 
-/* Keep all real content above the decor layer. */
-.has-decor > *:not(.decor) {
+/* Keep all real content above the decor layer.
+   Wrapped in :where() so this stays at zero specificity — otherwise it beats
+   component rules and forces absolutely-positioned decorative layers (blobs,
+   glows) back into normal flow, where their height pushes content down. */
+:where(.has-decor) > :where(:not(.decor)) {
   position: relative;
   z-index: 1;
 }
