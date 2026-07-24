@@ -1,0 +1,219 @@
+.reels {
+  padding: 96px 0;
+  background: var(--bg-soft);
+  overflow: hidden;
+}
+
+.reels__carousel {
+  position: relative;
+  margin-top: 8px;
+}
+
+/* Horizontal snap rail — reads like a Reels feed rather than a grid. */
+.reels__track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: max(24px, calc((100vw - 1200px) / 2));
+  /* Top room so the hover lift (5px) + ring (3px) never clips against overflow. */
+  padding: 12px max(24px, calc((100vw - 1200px) / 2)) 18px;
+  scrollbar-width: none;
+}
+
+.reels__track::-webkit-scrollbar {
+  display: none;
+}
+
+.reel {
+  flex: 0 0 244px;
+  margin: 0;
+  scroll-snap-align: start;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #0d1408;
+  line-height: 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+/* Green ring on hover, and kept while a reel is playing. */
+.reel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 0 3px var(--primary), var(--shadow-md);
+}
+
+.reel.is-playing {
+  box-shadow: 0 0 0 3px var(--primary), var(--shadow-md);
+}
+
+.reel__btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.reel__video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+}
+
+.reel__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 20, 8, 0) 55%, rgba(13, 20, 8, 0.85) 100%);
+  transition: opacity 0.3s ease;
+}
+
+.reel.is-playing .reel__shade {
+  opacity: 0;
+}
+
+/* Play/pause chip pinned bottom-left, Instagram-style */
+.reel__badge {
+  position: absolute;
+  left: 14px;
+  bottom: 58px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--primary-dark);
+  background: rgba(255, 255, 255, 0.94);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.reel__btn:hover .reel__badge {
+  transform: scale(1.12);
+}
+
+.reel.is-playing .reel__badge {
+  opacity: 0;
+}
+
+.reel__btn:hover .reel__badge,
+.reel.is-playing .reel__btn:hover .reel__badge {
+  opacity: 1;
+}
+
+/* Runtime chip, top-right — reads from the file's own metadata. */
+.reel__duration {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  background: rgba(13, 20, 8, 0.62);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.reel.is-playing .reel__duration {
+  opacity: 0;
+}
+
+.reel__caption {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--white);
+  text-align: left;
+  transition: opacity 0.3s ease;
+}
+
+.reel.is-playing .reel__caption {
+  opacity: 0;
+}
+
+.reel__btn:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: -3px;
+}
+
+/* Arrows */
+.reels__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--primary-dark);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.reels__nav:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.reels__nav--prev { left: 16px; }
+.reels__nav--next { right: 16px; }
+
+@media (max-width: 1024px) {
+  .reels {
+    padding: 80px 0;
+  }
+
+  .reels__track {
+    scroll-padding-left: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reels {
+    padding: 72px 0;
+  }
+
+  .reel {
+    flex-basis: 210px;
+  }
+
+  .reels__nav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .reels {
+    padding: 56px 0;
+  }
+
+  .reel {
+    flex-basis: 176px;
+  }
+
+  .reel__badge {
+    width: 34px;
+    height: 34px;
+    bottom: 52px;
+  }
+
+  .reel__caption {
+    font-size: 12px;
+  }
+}

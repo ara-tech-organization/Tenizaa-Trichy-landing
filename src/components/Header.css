@@ -2,14 +2,19 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--white);
+  background: #1c2b12;
   border-bottom: 1px solid transparent;
   transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .site-header.is-scrolled {
-  border-bottom-color: var(--border);
-  box-shadow: var(--shadow-sm);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+}
+
+/* Same treatment as the footer — keep the logo's own green, no recolouring. */
+.site-header__logo img {
+  filter: brightness(1.4);
 }
 
 .site-header__inner {
@@ -37,9 +42,15 @@
 .site-header__nav a {
   font-size: 14.5px;
   font-weight: 500;
-  color: var(--ink);
+  color: rgba(255, 255, 255, 0.82);
   position: relative;
   padding: 6px 2px;
+  transition: color 0.3s ease;
+}
+
+.site-header__nav a:hover,
+.site-header__nav a.is-active {
+  color: var(--white);
 }
 
 .site-header__nav a::after {
@@ -49,7 +60,7 @@
   bottom: 0;
   height: 2px;
   width: 0;
-  background: var(--primary);
+  background: var(--lime);
   transition: width 0.3s ease;
 }
 
@@ -70,7 +81,7 @@
   gap: 8px;
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--primary-dark);
+  color: var(--lime);
   white-space: nowrap;
 }
 
@@ -83,7 +94,7 @@
   display: none;
   background: none;
   border: none;
-  color: var(--ink);
+  color: var(--white);
   padding: 4px;
 }
 
@@ -110,15 +121,15 @@
     flex-direction: column;
     gap: 4px;
     padding: 12px 20px 20px;
-    border-top: 1px solid var(--border);
-    background: var(--white);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: #1c2b12;
   }
 
   .site-header__mobile a:not(.btn) {
     padding: 12px 4px;
     font-weight: 500;
-    color: var(--ink);
-    border-bottom: 1px solid var(--border);
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .site-header__mobile .btn {

@@ -4,6 +4,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import Reveal from './Reveal'
 import SplitText from './SplitText'
 import Eyebrow from './Eyebrow'
+import SectionDecor from './SectionDecor'
 import './FAQ.css'
 
 function FAQDoll() {
@@ -20,7 +21,7 @@ function FAQDoll() {
 const FAQS = [
   {
     q: 'What treatments does Tenziaa Trichy offer?',
-    a: 'We offer weight loss and slimming programs, fat reduction and body contouring, plus skin treatments like Hydrafacial, skin rejuvenation, brightening and anti-aging, and hair treatments including laser hair reduction and hair-fall care.',
+    a: 'We offer weight loss, slimming and inch loss programs, body contouring and fat reduction, weight management, diet & nutrition consultation, lifestyle coaching, and a combined skin & hair care program — all personalized to your goals.',
   },
   {
     q: 'Are your treatments non-surgical and pain-free?',
@@ -35,12 +36,12 @@ const FAQS = [
     a: 'Yes. Our programs use non-surgical, non-invasive approaches supervised by certified wellness specialists, combined with customized diet and continuous nutritionist support.',
   },
   {
-    q: 'How does laser hair reduction work?',
-    a: 'Laser hair reduction targets unwanted hair at the root for smoother, longer-lasting results. It begins with a skin and hair assessment, followed by targeted sessions customized to the treatment area.',
+    q: 'How does the inch loss program work?',
+    a: 'Our non-surgical inch loss program combines body contouring techniques with guided exercise and nutrition support. It begins with a body assessment to map target zones, followed by customized sessions monitored for measurable inch reduction.',
   },
   {
-    q: 'What skin concerns can you treat?',
-    a: 'We address dull skin, pigmentation, dark spots, uneven tone, fine lines, and wrinkles through Hydrafacial, skin rejuvenation, skin brightening, and anti-aging treatments tailored to your skin type.',
+    q: 'What skin and hair concerns can you treat?',
+    a: 'Our combined skin & hair care program addresses common concerns like dull skin, uneven tone, hair fall, and scalp health, combining advanced techniques with expert guidance for healthier, rejuvenated results.',
   },
   {
     q: 'How many sessions will I need?',
@@ -56,7 +57,8 @@ function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section id="faq" className="faq">
+    <section id="faq" className="faq has-decor">
+      <SectionDecor variant="l" />
       <div className="container faq__inner">
         <Reveal as="div" className="faq__intro">
           <Eyebrow text="Got Questions?" />

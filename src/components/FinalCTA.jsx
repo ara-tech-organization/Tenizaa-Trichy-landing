@@ -1,12 +1,14 @@
 import { CheckCircle2, PhoneCall } from 'lucide-react'
 import Reveal from './Reveal'
 import SplitText from './SplitText'
+import SectionDecor from './SectionDecor'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import './FinalCTA.css'
 
 function FinalCTA() {
   return (
-    <section className="final-cta">
+    <section className="final-cta has-decor">
+      <SectionDecor variant="m" />
       <div className="final-cta__blob final-cta__blob--one" aria-hidden="true" />
       <div className="final-cta__blob final-cta__blob--two" aria-hidden="true" />
 

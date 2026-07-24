@@ -5,15 +5,15 @@ import './Benefits.css'
 
 const BENEFITS = [
   'Non-Surgical Weight Loss',
-  'Advanced Skin Care',
-  'Safe Hair Treatments',
+  'Slimming & Inch Loss',
+  'Body Contouring',
+  'Fat Reduction',
   'Personalized Diet Plans',
+  'Weight Management Programs',
+  'Diet & Nutrition Guidance',
+  'Lifestyle Coaching',
+  'Skin & Hair Care',
   'Certified Wellness Specialists',
-  'Hydrafacial & Rejuvenation',
-  'Laser Hair Reduction',
-  'Body Contouring & Slimming',
-  'Anti-Aging Solutions',
-  'Pain-Free Advanced Technology',
 ]
 
 const ROW_ONE = BENEFITS.slice(0, 5)

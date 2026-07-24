@@ -2,11 +2,12 @@ import { MapPin, PhoneCall, Mail, Heart } from 'lucide-react'
 import logo from '../assets/tenzia logo.png'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from './BrandIcons'
+import SectionDecor from './SectionDecor'
 import './Footer.css'
 
 const SOCIALS = [
-  { label: 'Facebook', href: 'https://www.facebook.com/tenziaaclinictrichy/', Icon: FacebookIcon },
-  { label: 'Instagram', href: 'https://www.instagram.com/tenziaaclinictrichy/', Icon: InstagramIcon },
+  { label: 'Facebook', href: 'https://www.facebook.com/people/Tenziaa-Trichy-Thillai-Nagar/61589410452525/', Icon: FacebookIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/tenziaatrichythillai/', Icon: InstagramIcon },
   { label: 'WhatsApp', href: 'https://wa.me/919080808183', Icon: WhatsAppIcon },
 ]
 
@@ -19,9 +20,19 @@ const LINKS = [
   { label: 'Book Consultation', id: 'consult' },
 ]
 
+const TREATMENT_LINKS = [
+  'Weight Loss Programs',
+  'Slimming Treatments',
+  'Body Contouring',
+  'Inch Loss Program',
+  'Diet & Nutrition Consultation',
+  'Skin & Hair Care Program',
+]
+
 function Footer() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer has-decor">
+      <SectionDecor variant="o" />
       <div className="container site-footer__inner">
         <div className="site-footer__brand">
           <img src={logo} alt="Tenziaa Wellness and Aesthetic Clinic" />
@@ -42,6 +53,19 @@ function Footer() {
               <li key={link.id}>
                 <a href={pathForId(link.id)} onClick={(e) => handleSectionNavClick(e, link.id)}>
                   {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="site-footer__col">
+          <h4>Our Treatments</h4>
+          <ul>
+            {TREATMENT_LINKS.map((label) => (
+              <li key={label}>
+                <a href={pathForId('treatments')} onClick={(e) => handleSectionNavClick(e, 'treatments')}>
+                  {label}
                 </a>
               </li>
             ))}

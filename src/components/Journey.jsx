@@ -1,6 +1,7 @@
 import { MessageCircle, ScanLine, ClipboardList, TrendingUp, ArrowRight } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
+import SectionDecor from './SectionDecor'
 import './Journey.css'
 
 const STEPS = [
@@ -28,7 +29,8 @@ const STEPS = [
 
 function Journey() {
   return (
-    <section id="journey" className="journey">
+    <section id="journey" className="journey has-decor">
+      <SectionDecor variant="a" />
       <div className="container">
         <SectionHead
           eyebrow="How It Works"

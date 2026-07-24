@@ -294,22 +294,23 @@
     grid-template-columns: 1fr;
   }
 
+  /* Stacked layout reads better left-aligned than centred */
   .hero__copy {
-    text-align: center;
+    text-align: left;
   }
 
   .hero__desc {
     max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .hero__highlights {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero__cta-row {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero {

@@ -3,20 +3,21 @@ import { User, Smartphone, Mail, MapPin, Stethoscope, Building2, MessageSquare, 
 import Reveal from './Reveal'
 import SplitText from './SplitText'
 import Eyebrow from './Eyebrow'
+import CustomSelect from './CustomSelect'
+import SectionDecor from './SectionDecor'
 import { validateLeadForm } from '../utils/formValidation'
 import './Consult.css'
 
 const TREATMENTS = [
   'Weight Loss Programs',
   'Slimming Treatments',
-  'Hydrafacial',
-  'Laser Hair Reduction',
-  'Skin Rejuvenation',
   'Body Contouring',
   'Fat Reduction',
-  'Skin Brightening',
-  'Anti-Aging Treatments',
-  'Hair Treatments',
+  'Inch Loss Program',
+  'Weight Management Program',
+  'Diet & Nutrition Consultation',
+  'Lifestyle Coaching',
+  'Skin & Hair Care Program',
 ]
 
 const BRANCHES = ['Trichy — Thillai Nagar', 'Salem', 'Dharmapuri']
@@ -32,6 +33,16 @@ function Consult() {
     const validationError = validateLeadForm(formData)
     if (validationError) {
       setError(validationError)
+      return
+    }
+
+    // Custom dropdowns submit via hidden inputs, so validate them here.
+    if (!formData.get('treatment')) {
+      setError('Please select the treatment you are interested in.')
+      return
+    }
+    if (!formData.get('branch')) {
+      setError('Please select your preferred branch.')
       return
     }
 
@@ -68,7 +79,8 @@ function Consult() {
   }
 
   return (
-    <section id="consult" className="consult">
+    <section id="consult" className="consult has-decor">
+      <SectionDecor variant="n" />
       <div className="consult__blob consult__blob--one" aria-hidden="true" />
       <div className="consult__blob consult__blob--two" aria-hidden="true" />
 
@@ -113,20 +125,18 @@ function Consult() {
             </div>
 
             <div className="consult__row">
-              <label className="hero__field">
-                <Stethoscope size={17} />
-                <select name="treatment" defaultValue="" required>
-                  <option value="" disabled>Treatment Interested In</option>
-                  {TREATMENTS.map((t) => <option key={t} value={t}>{t}</option>)}
-                </select>
-              </label>
-              <label className="hero__field">
-                <Building2 size={17} />
-                <select name="branch" defaultValue="" required>
-                  <option value="" disabled>Preferred Branch</option>
-                  {BRANCHES.map((b) => <option key={b} value={b}>{b}</option>)}
-                </select>
-              </label>
+              <CustomSelect
+                name="treatment"
+                options={TREATMENTS}
+                placeholder="Treatment Interested In"
+                icon={<Stethoscope size={17} />}
+              />
+              <CustomSelect
+                name="branch"
+                options={BRANCHES}
+                placeholder="Preferred Branch"
+                icon={<Building2 size={17} />}
+              />
             </div>
 
             <label className="hero__field hero__field--textarea">

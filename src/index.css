@@ -14,13 +14,13 @@
   --bg-soft-2: #f1f8e4;
   --border: #e3ecd6;
   --white: #ffffff;
-  --shadow-sm: 0 2px 10px rgba(76, 122, 21, 0.08);
-  --shadow-md: 0 12px 32px rgba(76, 122, 21, 0.12);
-  --shadow-lg: 0 24px 60px rgba(26, 36, 17, 0.14);
+  --shadow-sm: 0 2px 12px rgba(76, 122, 21, 0.06);
+  --shadow-md: 0 8px 30px rgba(76, 122, 21, 0.09);
+  --shadow-lg: 0 18px 50px rgba(26, 36, 17, 0.10);
   --grad-primary: linear-gradient(135deg, #6fae1f 0%, #9ccc3c 55%, #cddc39 100%);
   --grad-dark: linear-gradient(160deg, #365710 0%, #4c7a15 55%, #6fae1f 100%);
-  --radius-sm: 12px;
-  --radius-md: 20px;
+  --radius-sm: 14px;
+  --radius-md: 22px;
   --radius-lg: 32px;
   --font: 'Poppins', system-ui, sans-serif;
 }

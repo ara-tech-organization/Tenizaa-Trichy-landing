@@ -1,23 +1,50 @@
-import { HeartPulse, ShieldCheck, Sparkles, Stethoscope } from 'lucide-react'
+import { Sparkles, Award, CheckCircle2 } from 'lucide-react'
 import Reveal from './Reveal'
 import SplitText from './SplitText'
 import Eyebrow from './Eyebrow'
+import SectionDecor from './SectionDecor'
 import './About.css'
 
 const PILLARS = [
-  { icon: Stethoscope, text: 'Proper diagnostic assessment for every client' },
-  { icon: HeartPulse, text: 'Personalized plans, never one-size-fits-all' },
-  { icon: ShieldCheck, text: 'Certified professionals & advanced technology' },
-  { icon: Sparkles, text: 'Safe, comfortable, result-driven visits' },
+  'Proper diagnostic assessment for every client',
+  'Personalized plans, never one-size-fits-all',
+  'Certified professionals & advanced technology',
+  'Safe, comfortable, result-driven visits',
 ]
 
 function About() {
   return (
-    <section id="about" className="about">
+    <section id="about" className="about has-decor">
+      <SectionDecor variant="i" />
       <div className="container about__inner">
-        <Reveal as="div" dir="left" className="about__copy">
+        <Reveal as="div" dir="left" className="about__visual">
+          <div className="about__panel">
+            <div className="about__panel-glow" aria-hidden="true" />
+            <div className="about__panel-icon">
+              <Sparkles size={34} strokeWidth={1.5} />
+            </div>
+            <strong>Wellness &amp; Aesthetic Care</strong>
+            <span>NSA Arcade, Thillai Nagar &middot; Trichy</span>
+          </div>
+
+          <div className="about__badge about__badge--one">
+            <strong>1000+</strong>
+            <span>Happy Clients</span>
+          </div>
+
+          <div className="about__badge about__badge--two">
+            <span className="about__badge-icon"><Award size={18} /></span>
+            <span>3+ Years of Excellence</span>
+          </div>
+        </Reveal>
+
+        <Reveal as="div" dir="right" className="about__content">
           <Eyebrow text="About Tenziaa Trichy" />
-          <SplitText as="h2" parts={[{ text: 'Science-Backed Wellness & Aesthetic Care in Thillai Nagar' }]} />
+          <SplitText
+            as="h2"
+            delay={0.12}
+            parts={[{ text: 'Science-Backed Wellness & Aesthetic Care in Thillai Nagar' }]}
+          />
           <p>
             Tenziaa Wellness &amp; Aesthetic Clinic in Trichy brings the same trusted, science-backed
             approach to weight loss, skin, and hair care that has helped thousands of clients across
@@ -31,17 +58,15 @@ function About() {
             with genuine, heartfelt care, using advanced technology to make every visit safe,
             comfortable, and result-driven.
           </p>
-        </Reveal>
 
-        <Reveal as="div" dir="right" className="about__pillars">
-          {PILLARS.map(({ icon: Icon, text }, i) => (
-            <div className="about__pillar" key={text} style={{ transitionDelay: `${i * 80}ms` }}>
-              <div className="about__pillar-icon">
-                <Icon size={22} strokeWidth={1.8} />
-              </div>
-              <p>{text}</p>
-            </div>
-          ))}
+          <ul className="about__ticks">
+            {PILLARS.map((text) => (
+              <li key={text}>
+                <CheckCircle2 size={18} strokeWidth={2.4} />
+                <span>{text}</span>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

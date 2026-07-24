@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 import {
-  Scale, Activity, Droplets, Zap, Sparkles, Shapes, Flame, Sun, Gem, Scissors,
+  Scale, Activity, Shapes, Flame, Ruler, TrendingDown, Salad, HeartPulse, Sparkles,
   X, ArrowRight, Check, ClipboardList,
 } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
+import SectionDecor from './SectionDecor'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import './Treatments.css'
 
 const CATS = {
-  weight: 'Weight Loss',
-  skin: 'Skin',
-  hair: 'Hair',
+  weight: 'Weight & Slimming',
+  skin: 'Skin & Hair',
 }
 
 const TREATMENTS = [
@@ -34,33 +34,6 @@ const TREATMENTS = [
     procedure: ['Starts with a body assessment to identify target zones', 'Followed by customized sessions using proven slimming techniques', 'Monitored regularly to track inch-loss progress'],
   },
   {
-    icon: Droplets,
-    cat: 'skin',
-    title: 'Hydrafacial',
-    overview:
-      'A deep-cleansing, hydrating facial treatment available at our Trichy clinic that instantly refreshes the skin, leaving it clearer, smoother, and visibly radiant.',
-    benefits: ['Improved skin texture', 'Deep pore cleansing', 'Instant hydration boost', 'Suitable for all skin types'],
-    procedure: ['Starts with a skin analysis', 'Followed by a multi-step cleansing, exfoliation, and extraction process', 'Completed with nourishing serum infusion for glowing results'],
-  },
-  {
-    icon: Zap,
-    cat: 'hair',
-    title: 'Laser Hair Reduction',
-    overview:
-      'A safe, advanced laser hair reduction treatment in Trichy that targets unwanted hair at the root for smoother, longer-lasting results.',
-    benefits: ['Long-term hair reduction', 'Minimal discomfort', 'Quick sessions', 'Suitable for various skin and hair types'],
-    procedure: ['Begins with a skin and hair assessment', 'Followed by targeted laser sessions customized to the treatment area', 'Progress monitored across a recommended session plan'],
-  },
-  {
-    icon: Sparkles,
-    cat: 'skin',
-    title: 'Skin Rejuvenation',
-    overview:
-      'A restorative treatment at our Trichy branch that revives dull, tired skin, helping restore natural glow, tone, and texture.',
-    benefits: ['Brighter, healthier-looking skin', 'Reduced dullness and uneven tone', 'Improved skin elasticity', 'Minimal downtime'],
-    procedure: ['Starts with a detailed skin diagnosis', 'Followed by a customized rejuvenation protocol, with sessions', 'Monitored to track visible improvement over time'],
-  },
-  {
     icon: Shapes,
     cat: 'weight',
     title: 'Body Contouring',
@@ -79,31 +52,49 @@ const TREATMENTS = [
     procedure: ['Starts with a diagnostic evaluation of target areas', 'Followed by customized fat-reduction sessions', 'Monitored regularly to ensure steady, safe progress'],
   },
   {
-    icon: Sun,
-    cat: 'skin',
-    title: 'Skin Brightening',
+    icon: Ruler,
+    cat: 'weight',
+    title: 'Inch Loss Program',
     overview:
-      'A specialized skin brightening treatment in Trichy that reduces pigmentation, dark spots, and uneven tone, revealing clearer, more radiant skin.',
-    benefits: ['Reduced pigmentation and dark spots', 'More even skin tone', 'Brighter, healthier-looking complexion', 'Suitable for regular skincare maintenance'],
-    procedure: ['Begins with a skin tone and pigmentation assessment', 'Followed by a customized brightening protocol', 'Monitored across sessions for gradual, visible improvement'],
+      'A targeted, non-surgical inch loss clinic Trichy program using body contouring techniques, guided exercise and nutrition support to help reduce inches from problem areas safely.',
+    benefits: ['Visible reduction in inches', 'Improved body shape and tone', 'Non-invasive and pain-free', 'Personalized session plans'],
+    procedure: ['Begins with a body assessment to map target zones', 'Followed by customized inch-loss sessions with exercise and nutrition support', 'Monitored regularly to track measurable inch reduction'],
   },
   {
-    icon: Gem,
-    cat: 'skin',
-    title: 'Anti-Aging Treatments',
+    icon: TrendingDown,
+    cat: 'weight',
+    title: 'Weight Management Program',
     overview:
-      'A rejuvenating anti-aging treatment in Trichy that targets fine lines, wrinkles, and sagging skin for a refreshed, youthful appearance.',
-    benefits: ['Smoother, firmer skin', 'Reduced fine lines and wrinkles', 'Improved skin elasticity', 'Natural-looking results'],
-    procedure: ['Starts with a detailed skin and aging assessment', 'Followed by a personalized anti-aging protocol, with progress', 'Monitored to maintain natural, lasting results'],
+      'A structured, long-term weight management program in Trichy combining lifestyle assessment, diet planning and regular monitoring to help you maintain a healthy weight consistently.',
+    benefits: ['Sustainable long-term results', 'Personalized diet and activity plans', 'Regular progress tracking', 'Reduced risk of weight-related health issues'],
+    procedure: ['Starts with a lifestyle and body composition assessment', 'Followed by a personalized diet and activity plan', 'Regular monitoring and adjustments to maintain a healthy weight'],
   },
   {
-    icon: Scissors,
-    cat: 'hair',
-    title: 'Hair Treatments',
+    icon: Salad,
+    cat: 'weight',
+    title: 'Diet & Nutrition Consultation',
     overview:
-      'A comprehensive hair treatment program at our Trichy clinic addressing hair fall, thinning, and scalp health through safe, results-driven therapies.',
-    benefits: ['Reduced hair fall', 'Improved scalp health', 'Stronger hair growth over time', 'Customized to individual hair concerns'],
-    procedure: ['Begins with a scalp and hair diagnostic assessment', 'Followed by a customized treatment plan combining therapy and care routines', 'Monitored regularly for consistent hair health improvement'],
+      'A one-on-one diet and nutrition consultation in Trichy designed to build a customized eating plan based on your body type, lifestyle and health goals for lasting results.',
+    benefits: ['Personalized meal planning', 'Better energy and digestion', 'Balanced, sustainable eating habits', 'Expert nutritionist guidance'],
+    procedure: ['Begins with a one-on-one assessment of your body type and lifestyle', 'Followed by a customized, easy-to-follow meal plan', 'Ongoing nutritionist guidance to keep habits on track'],
+  },
+  {
+    icon: HeartPulse,
+    cat: 'weight',
+    title: 'Lifestyle Coaching',
+    overview:
+      'A holistic lifestyle coaching program in Trichy focused on building healthy daily habits around nutrition, activity and mindset for long-term wellness and weight management.',
+    benefits: ['Improved daily routines and habits', 'Better stress and mindset management', 'Consistent motivation and accountability', 'Long-term wellness support'],
+    procedure: ['Starts with a review of your daily routines and goals', 'Followed by practical coaching on nutrition, activity, and mindset', 'Regular accountability check-ins for long-term wellness'],
+  },
+  {
+    icon: Sparkles,
+    cat: 'skin',
+    title: 'Skin & Hair Care Program',
+    overview:
+      'A comprehensive skin and hair care clinic Trichy program offering personalized treatments for common skin and hair concerns, combining advanced techniques with expert guidance for healthier, rejuvenated results.',
+    benefits: ['Improved skin texture and glow', 'Reduced hair fall and better scalp health', 'Personalized treatment plans', 'Safe, non-invasive procedures'],
+    procedure: ['Begins with a skin and scalp diagnostic assessment', 'Followed by a personalized skin and hair treatment plan', 'Monitored across sessions for healthier skin and stronger hair'],
   },
 ]
 
@@ -171,11 +162,21 @@ function TreatmentModal({ treatment, onClose }) {
   )
 }
 
+const FILTERS = [
+  { key: 'all', label: 'All' },
+  { key: 'weight', label: 'Weight & Slimming' },
+  { key: 'skin', label: 'Skin & Hair' },
+]
+
 function Treatments() {
   const [active, setActive] = useState(null)
+  const [filter, setFilter] = useState('all')
+
+  const visible = filter === 'all' ? TREATMENTS : TREATMENTS.filter((t) => t.cat === filter)
 
   return (
-    <section id="treatments" className="treatments">
+    <section id="treatments" className="treatments has-decor">
+      <SectionDecor variant="j" />
       <div className="container">
         <SectionHead
           eyebrow="Our Advanced Treatments in Trichy"
@@ -184,14 +185,29 @@ function Treatments() {
           desc={<>Explore Tenziaa Trichy&rsquo;s specialized treatments for weight loss, skin, and hair, each guided by expert care and proven techniques. Tap any treatment to see the full details.</>}
         />
 
+        <div className="treatments__filters" role="tablist" aria-label="Filter treatments">
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              type="button"
+              role="tab"
+              aria-selected={filter === f.key}
+              className={`treatments__filter ${filter === f.key ? 'is-active' : ''}`}
+              onClick={() => setFilter(f.key)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
         <div className="treatments__grid">
-          {TREATMENTS.map((treatment, i) => {
+          {visible.map((treatment, i) => {
             const Icon = treatment.icon
             return (
               <Reveal
                 as="div"
                 key={treatment.title}
-                delay={(i % 3) * 120}
+                delay={(i % 3) * 90}
                 dir={i % 3 === 0 ? 'left' : i % 3 === 2 ? 'right' : 'up'}
               >
                 <button

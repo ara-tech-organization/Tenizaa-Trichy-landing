@@ -10,6 +10,7 @@ import Benefits from './components/Benefits'
 import Journey from './components/Journey'
 import Transformations from './components/Transformations'
 import Testimonials from './components/Testimonials'
+import VideoTestimonials from './components/VideoTestimonials'
 import Branches from './components/Branches'
 import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
@@ -66,6 +67,7 @@ function App() {
         <Journey />
         <Transformations />
         <Testimonials />
+        <VideoTestimonials />
         <Branches />
         <FAQ />
         <FinalCTA />

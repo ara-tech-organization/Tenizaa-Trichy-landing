@@ -1,16 +1,14 @@
 import { useRef, useEffect } from 'react'
-import { Flame, Zap, Droplets, Gem, Shapes, Sun, ChevronLeft, ChevronRight, Check } from 'lucide-react'
+import { Waves, Dumbbell, Snowflake, ChevronLeft, ChevronRight, Check } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
+import SectionDecor from './SectionDecor'
 import './Machines.css'
 
 const MACHINES = [
-  { icon: Flame, tone: 'weight', name: 'Non-Surgical Fat Reduction', purpose: 'Breaks down stubborn fat deposits without surgery for a leaner, more toned appearance.' },
-  { icon: Shapes, tone: 'weight', name: 'Body Contouring & Slimming', purpose: 'Reshapes and defines your figure by targeting stubborn fat across multiple body zones.' },
-  { icon: Zap, tone: 'hair', name: 'Laser Hair Reduction System', purpose: 'Targets unwanted hair at the root for smoother, longer-lasting results.' },
-  { icon: Droplets, tone: 'skin', name: 'Hydrafacial Skin System', purpose: 'Deep-cleanses, exfoliates, and hydrates the skin for an instantly radiant glow.' },
-  { icon: Gem, tone: 'skin', name: 'Skin Tightening & Anti-Aging', purpose: 'Firms and smooths the skin, reducing fine lines, wrinkles, and sagging.' },
-  { icon: Sun, tone: 'skin', name: 'Skin Brightening & Rejuvenation', purpose: 'Reduces pigmentation and uneven tone while restoring natural glow and texture.' },
+  { icon: Waves, tone: 'weight', name: 'VCA Machine', purpose: 'Uses advanced vacuum and cavitation technology to break down stubborn fat and smooth targeted areas without surgery.' },
+  { icon: Dumbbell, tone: 'weight', name: 'EMSculpt', purpose: 'Stimulates deep, high-intensity muscle contractions to tone, strengthen, and sculpt the body while reducing fat.' },
+  { icon: Snowflake, tone: 'skin', name: 'Cryo', purpose: 'Uses controlled cooling to target and reduce stubborn fat cells for a more contoured, defined shape.' },
 ]
 
 const BENEFITS = [
@@ -50,7 +48,8 @@ function Machines() {
   }, [])
 
   return (
-    <section id="machines" className="machines">
+    <section id="machines" className="machines has-decor">
+      <SectionDecor variant="b" />
       <div className="container">
         <SectionHead
           eyebrow="Advanced Machines at Our Trichy Clinic"

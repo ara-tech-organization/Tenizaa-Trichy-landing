@@ -1,117 +1,295 @@
-.testimonials {
+.spot {
+  position: relative;
+  overflow: hidden;
   padding: 100px 0;
   background: var(--white);
 }
 
-.testimonials__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin: 0 auto;
-}
+/* Outer decoration comes from the shared <SectionDecor /> component. */
 
-.testimonials__card {
+/* ---- Spotlight card ---- */
+.spot__stage {
   position: relative;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 40px 36px;
-  margin: 0;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
-}
-
-.testimonials__card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-}
-
-.testimonials__quote-icon {
-  color: var(--lime);
-  margin-bottom: 6px;
-}
-
-.testimonials__stars {
-  display: flex;
-  gap: 3px;
-  color: var(--primary);
-  margin-bottom: 16px;
-}
-
-.testimonials__card blockquote {
-  margin: 0 0 24px;
-  font-size: 15.5px;
-  line-height: 1.8;
-  color: var(--ink);
-  font-style: italic;
-}
-
-.testimonials__card figcaption {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--body);
+  gap: 20px;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 56px 48px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--bg-soft) 0%, var(--white) 55%, var(--lime-light) 100%);
+  overflow: hidden;
 }
 
-.testimonials__avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--grad-primary);
-  color: var(--white);
+.spot__watermark {
+  position: absolute;
+  top: -46px;
+  right: -20px;
+  color: var(--primary);
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.spot__body {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.spot__stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  color: #f5b301;
+  margin-bottom: 22px;
+}
+
+.spot__quote {
+  margin: 0 0 28px;
+  font-size: clamp(18px, 2.1vw, 25px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  animation: spotFade 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes spotFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spot__quote { animation: none; }
+}
+
+.spot__author {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+}
+
+.spot__avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.spot__name {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+/* Slide counter */
+.spot__count {
+  margin: 20px 0 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--body);
+}
+
+.spot__count strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+/* Auto-advance progress line pinned to the card's bottom edge */
+.spot__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(111, 174, 31, 0.14);
+  overflow: hidden;
+}
+
+.spot__progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: var(--grad-primary);
+  animation: spotProgress 6500ms linear forwards;
+}
+
+@keyframes spotProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Hovering pauses the rotation, so pause the bar to match. */
+.spot__stage:hover .spot__progress-fill,
+.spot__stage:focus-within .spot__progress-fill {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spot__progress { display: none; }
+}
+
+/* ---- Arrows ---- */
+.spot__nav {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--primary-dark);
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.spot__nav:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: scale(1.08);
+}
+
+.spot__nav:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ---- Author pills ---- */
+.spot__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.spot__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px 7px 7px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.spot__pill:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.spot__pill.is-active {
+  border-color: transparent;
+  background: var(--grad-primary);
+}
+
+.spot__pill.is-active .spot__pill-name {
+  color: var(--white);
+}
+
+.spot__pill.is-active .spot__pill-avatar {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary-dark);
+}
+
+.spot__pill:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.spot__pill-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--lime-light);
+  color: var(--primary-dark);
+  display: grid;
+  place-items: center;
+  font-size: 12.5px;
   font-weight: 700;
   flex-shrink: 0;
 }
 
-@media (max-width: 1024px) {
-  .testimonials {
-    padding: 80px 0;
-  }
+.spot__pill-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--body);
+  white-space: nowrap;
 }
 
-@media (max-width: 900px) {
-  .testimonials__grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 1024px) {
+  .spot {
+    padding: 80px 0;
+  }
+
+  .spot__stage {
+    padding: 46px 32px;
   }
 }
 
 @media (max-width: 768px) {
-  .testimonials__grid {
-    max-width: 100%;
-    gap: 20px;
+  .spot {
+    padding: 72px 0;
   }
 
-  .testimonials__card {
-    padding: 28px 22px;
+  .spot__stage {
+    padding: 40px 20px;
+    gap: 10px;
+  }
+
+  .spot__nav {
+    width: 38px;
+    height: 38px;
+  }
+
+  .spot__watermark {
+    top: -30px;
+    right: -30px;
   }
 }
 
 @media (max-width: 560px) {
-  .testimonials__grid {
-    grid-template-columns: 1fr;
+  /* Arrows drop below the quote so the text keeps full width */
+  .spot__stage {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 34px 20px;
+  }
+
+  .spot__body {
+    flex: 0 0 100%;
+    order: -1;
+  }
+
+  .spot__pill-name {
+    display: none;
+  }
+
+  .spot__pill {
+    padding: 6px;
   }
 }
 
 @media (max-width: 480px) {
-  .testimonials {
+  .spot {
     padding: 56px 0;
-  }
-
-  .testimonials__card {
-    padding: 30px 24px;
-  }
-}
-
-@media (max-width: 360px) {
-  .testimonials__card {
-    padding: 24px 18px;
-  }
-
-  .testimonials__card blockquote {
-    font-size: 14.5px;
   }
 }

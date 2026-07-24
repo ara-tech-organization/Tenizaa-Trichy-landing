@@ -1,0 +1,119 @@
+.cselect {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Reuses .hero__field for the box styling; reset the button defaults. */
+.cselect__trigger {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font);
+}
+
+.cselect.is-open .cselect__trigger {
+  border-color: var(--primary);
+  background: var(--white);
+}
+
+.cselect__value {
+  flex: 1;
+  min-width: 0;
+  font-size: 14.5px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cselect__value.is-placeholder {
+  color: #9aa693;
+}
+
+.cselect__chevron {
+  flex-shrink: 0;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.cselect.is-open .cselect__chevron {
+  transform: rotate(180deg);
+}
+
+/* Menu */
+.cselect__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  max-height: 246px;
+  overflow-y: auto;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 6px;
+  animation: cselectIn 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cselectIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cselect__option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  border: none;
+  background: transparent;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--body);
+  padding: 11px 14px;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cselect__option:hover,
+.cselect__option.is-active {
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+.cselect__option.is-selected {
+  background: var(--lime-light);
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.cselect__option svg {
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* Scrollbar */
+.cselect__menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cselect__menu::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+@media (max-width: 480px) {
+  .cselect__value {
+    font-size: 13.5px;
+  }
+
+  .cselect__option {
+    font-size: 13.5px;
+    padding: 10px 12px;
+  }
+}

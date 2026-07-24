@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CheckCircle2, Phone, ArrowRight, User, Smartphone, MapPin, CalendarDays, Sparkles } from 'lucide-react'
+import { CheckCircle2, Phone, ArrowRight, User, Smartphone, MapPin, Stethoscope, MessageSquare, Sparkles } from 'lucide-react'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import { validateLeadForm } from '../utils/formValidation'
 import { WhatsAppIcon } from './BrandIcons'
@@ -37,7 +37,9 @@ function Hero() {
       name: formData.get('name') || '-',
       city: formData.get('city') || '-',
       phone: formData.get('phone') || '-',
-      date: formData.get('date') || new Date().toISOString().slice(0, 10),
+      treatment: formData.get('treatment') || '-',
+      message: formData.get('message') || '-',
+      date: new Date().toISOString().slice(0, 10),
       source: 'Website Form',
     }
 
@@ -121,8 +123,17 @@ function Hero() {
                 <input type="text" name="city" placeholder="Enter your city" pattern="[A-Za-z\s]+" title="Only letters are allowed" required />
               </label>
               <label className="hero__field">
-                <CalendarDays size={17} />
-                <input type="date" name="date" required />
+                <Stethoscope size={17} />
+                <select name="treatment" defaultValue="" required>
+                  <option value="" disabled>Treatment Interested In</option>
+                  <option value="Weight Loss">Weight Loss</option>
+                  <option value="Skin">Skin</option>
+                  <option value="Hair">Hair</option>
+                </select>
+              </label>
+              <label className="hero__field hero__field--textarea">
+                <MessageSquare size={17} />
+                <textarea name="message" placeholder="Message (optional)" rows={3} />
               </label>
               {error && <p className="hero__form-error">{error}</p>}
               <button type="submit" className="btn btn-primary hero__submit" disabled={submitting}>

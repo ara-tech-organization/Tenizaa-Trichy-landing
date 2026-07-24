@@ -1,6 +1,7 @@
 import { PhoneCall, Mail, Clock, MapPin } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
+import SectionDecor from './SectionDecor'
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from './BrandIcons'
 import './Contact.css'
 
@@ -32,14 +33,15 @@ const CARDS = [
 ]
 
 const SOCIALS = [
-  { label: 'Instagram', href: 'https://www.instagram.com/tenziaaclinictrichy/', Icon: InstagramIcon },
-  { label: 'Facebook', href: 'https://www.facebook.com/tenziaaclinictrichy/', Icon: FacebookIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/tenziaatrichythillai/', Icon: InstagramIcon },
+  { label: 'Facebook', href: 'https://www.facebook.com/people/Tenziaa-Trichy-Thillai-Nagar/61589410452525/', Icon: FacebookIcon },
   { label: 'WhatsApp', href: 'https://wa.me/919080808183', Icon: WhatsAppIcon },
 ]
 
 function Contact() {
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact has-decor">
+      <SectionDecor variant="d" />
       <div className="container">
         <SectionHead
           eyebrow="Contact Us"

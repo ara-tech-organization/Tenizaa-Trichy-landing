@@ -1,6 +1,7 @@
 import { MapPin, PhoneCall, Clock, ArrowRight } from 'lucide-react'
 import Reveal from './Reveal'
 import SectionHead from './SectionHead'
+import SectionDecor from './SectionDecor'
 import { pathForId, handleSectionNavClick } from '../utils/sectionNav'
 import './Branches.css'
 
@@ -9,7 +10,8 @@ const MAP_SRC =
 
 function Branches() {
   return (
-    <section id="branches" className="branches">
+    <section id="branches" className="branches has-decor">
+      <SectionDecor variant="c" />
       <div className="container">
         <SectionHead
           eyebrow="Visit Us in Trichy"
