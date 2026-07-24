@@ -1,7 +1,12 @@
 /* Host section */
 .has-decor {
   position: relative;
+  /* `clip` (not `hidden`) so the decor is still cropped without creating a
+     scroll container — `overflow: hidden` silently breaks `position: sticky`
+     on descendants, e.g. the Why Choose / FAQ intro columns.
+     `hidden` first as a fallback for browsers without `clip`. */
   overflow: hidden;
+  overflow: clip;
 }
 
 /* Keep all real content above the decor layer.
