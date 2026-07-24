@@ -29,9 +29,10 @@
 .decor__pos--tr { top: 72px; right: 6%; }
 .decor__pos--bl { bottom: 72px; left: 6%; }
 
-/* Secondary accents, offset inward from the same corners */
-.decor__pos--tr2 { top: 168px; right: 13%; }
-.decor__pos--bl2 { bottom: 168px; left: 13%; }
+/* Secondary accents, offset inward from the same corners.
+   Cleared below the tallest primary shape (arc, 150px starting at 72px). */
+.decor__pos--tr2 { top: 244px; right: 14%; }
+.decor__pos--bl2 { bottom: 244px; left: 14%; }
 
 /* ---- Soft blobs (also corner-anchored) ---- */
 .decor__blob {
