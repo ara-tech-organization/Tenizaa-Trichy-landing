@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { UserCheck, GraduationCap, ShieldCheck, ScanLine, LineChart, MapPin, ArrowRight } from 'lucide-react'
 import Reveal from './Reveal'
 import SplitText from './SplitText'
@@ -40,43 +39,7 @@ const REASONS = [
   },
 ]
 
-const PARALLAX_RANGE = 70 // px of total drift between the two columns
-
 function WhyChooseUs() {
-  const listRef = useRef(null)
-
-  // Scroll-driven parallax: the two card columns drift in opposite directions
-  // as the section travels through the viewport.
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const el = listRef.current
-    if (!el) return
-
-    let raf = 0
-    const update = () => {
-      raf = 0
-      const rect = el.getBoundingClientRect()
-      const vh = window.innerHeight
-      // 0 as the block enters from the bottom, 1 as it leaves past the top.
-      const progress = (vh - rect.top) / (vh + rect.height)
-      const clamped = Math.min(Math.max(progress, 0), 1)
-      el.style.setProperty('--parallax', `${(clamped - 0.5) * PARALLAX_RANGE}px`)
-    }
-
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      if (raf) cancelAnimationFrame(raf)
-    }
-  }, [])
-
   return (
     <section id="why-us" className="why has-decor">
       <SectionDecor variant="k" />
@@ -97,23 +60,20 @@ function WhyChooseUs() {
           </a>
         </Reveal>
 
-        <div className="why__list" ref={listRef}>
+        <div className="why__list">
           {REASONS.map((reason, i) => {
             const Icon = reason.icon
             return (
-              // The cell carries the parallax; Reveal owns its own transform.
-              <div className="why__cell" key={reason.title}>
-                <Reveal as="div" delay={(i % 2) * 90} className="why__item">
-                  <span className="why__num">{`0${i + 1}`}</span>
-                  <div className="why__item-icon">
-                    <Icon size={22} strokeWidth={1.8} />
-                  </div>
-                  <div className="why__item-body">
-                    <h3>{reason.title}</h3>
-                    <p>{reason.desc}</p>
-                  </div>
-                </Reveal>
-              </div>
+              <Reveal as="div" key={reason.title} delay={(i % 2) * 90} className="why__item">
+                <span className="why__num">{`0${i + 1}`}</span>
+                <div className="why__item-icon">
+                  <Icon size={22} strokeWidth={1.8} />
+                </div>
+                <div className="why__item-body">
+                  <h3>{reason.title}</h3>
+                  <p>{reason.desc}</p>
+                </div>
+              </Reveal>
             )
           })}
         </div>

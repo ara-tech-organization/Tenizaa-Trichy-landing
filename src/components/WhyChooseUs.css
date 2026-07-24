@@ -35,28 +35,9 @@
 
 /* Right numbered list */
 .why__list {
-  --parallax: 0px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-  align-items: start;
-}
-
-/* Parallax: the two columns drift in opposite directions on scroll. */
-.why__cell {
-  will-change: transform;
-}
-
-.why__cell:nth-child(odd) {
-  transform: translateY(calc(var(--parallax) * -1));
-}
-
-.why__cell:nth-child(even) {
-  transform: translateY(var(--parallax));
-}
-
-.why__item {
-  height: 100%;
 }
 
 .why__item {
@@ -127,13 +108,6 @@
 
   .why__intro {
     position: static;
-  }
-}
-
-/* Single column / reduced motion: no drift. */
-@media (max-width: 560px), (prefers-reduced-motion: reduce) {
-  .why__cell {
-    transform: none !important;
   }
 }
 
