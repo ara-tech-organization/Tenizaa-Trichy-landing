@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      # `npm install` (not `npm ci`): the lockfile is generated on Windows, so it
+      # omits Linux-only native bindings (@emnapi/*) that `npm ci` requires here.
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
