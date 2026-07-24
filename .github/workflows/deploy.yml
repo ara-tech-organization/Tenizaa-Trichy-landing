@@ -27,6 +27,8 @@ jobs:
       # omits Linux-only native bindings (@emnapi/*) that `npm ci` requires here.
       - run: npm install --no-audit --no-fund
       - run: npm run build
+        env:
+          GITHUB_PAGES: 'true'
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
