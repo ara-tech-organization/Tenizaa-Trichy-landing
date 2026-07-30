@@ -12,6 +12,7 @@ import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
 import FloatingSocial from './components/FloatingSocial'
+import MobileCTABar from './components/MobileCTABar'
 import ThankYou from './components/ThankYou'
 import Popup from './components/Popup'
 import { idForPath, scrollToId } from './utils/sectionNav'
@@ -43,6 +44,7 @@ function App() {
         </main>
         <Footer />
         <FloatingSocial />
+        <MobileCTABar />
       </>
     )
   }
@@ -64,6 +66,7 @@ function App() {
       </main>
       <Footer />
       <FloatingSocial />
+      <MobileCTABar />
       <Popup />
     </>
   )

@@ -45,11 +45,22 @@
   }
 }
 
+/* The sticky mobile CTA bar already offers Call Now, so drop the duplicate
+   floating call button and lift WhatsApp clear of the bar. */
+@media (max-width: 480px) {
+  .floating-social--call {
+    display: none;
+  }
+
+  .floating-social--right {
+    bottom: calc(94px + env(safe-area-inset-bottom));
+  }
+}
+
 @media (max-width: 480px) {
   .floating-social {
     width: 48px;
     height: 48px;
-    bottom: 16px;
   }
 
   .floating-social--left {
