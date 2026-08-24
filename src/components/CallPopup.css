@@ -1,0 +1,220 @@
+.call-popup__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 20, 0.6);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1100;
+  padding: 40px 16px;
+  animation: callPopupFadeIn 0.25s ease;
+}
+
+.call-popup__card {
+  position: relative;
+  background: linear-gradient(180deg, #fffdf6 0%, var(--white) 55%);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  max-width: 420px;
+  width: 100%;
+  flex-shrink: 0;
+  margin: auto 0;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  animation: callPopupSlideUp 0.3s ease;
+}
+
+.call-popup__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  background: var(--bg-soft);
+  color: var(--ink);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.call-popup__badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.call-popup__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.call-popup__badge--urgent {
+  background: #fdeaea;
+  color: #c0392b;
+}
+
+.call-popup__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c0392b;
+}
+
+.call-popup__badge--gold {
+  background: #faf3dd;
+  color: #a67c1e;
+}
+
+.call-popup__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.call-popup__title span {
+  color: #c9a227;
+}
+
+.call-popup__subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--body);
+  margin-bottom: 22px;
+}
+
+.call-popup__offer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #fff8ea 0%, #fdf3d9 100%);
+  border: 1px dashed #e8cf8a;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.call-popup__offer-price {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.call-popup__offer-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a67c1e;
+}
+
+.call-popup__timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #1c1c1c;
+  border-radius: 999px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+}
+
+.call-popup__timer span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b8b8b8;
+}
+
+.call-popup__timer strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: #e8c468;
+  font-variant-numeric: tabular-nums;
+}
+
+.call-popup__call-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(122deg, #96301f, #b23b2c 52%, #a33628);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 15px 20px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 28px rgba(178, 59, 44, 0.32);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  margin-bottom: 18px;
+}
+
+.call-popup__call-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(178, 59, 44, 0.4);
+}
+
+.call-popup__trust {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.call-popup__confidential {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--body);
+  margin-bottom: 16px;
+}
+
+.call-popup__dismiss {
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: var(--body);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+@keyframes callPopupFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes callPopupSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .call-popup__backdrop {
+    padding: 24px 12px;
+  }
+
+  .call-popup__card {
+    padding: 26px 20px;
+  }
+}

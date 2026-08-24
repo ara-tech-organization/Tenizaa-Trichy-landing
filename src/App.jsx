@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import WhyChooseUs from './components/WhyChooseUs'
@@ -15,10 +15,16 @@ import FloatingSocial from './components/FloatingSocial'
 import MobileCTABar from './components/MobileCTABar'
 import ThankYou from './components/ThankYou'
 import Popup from './components/Popup'
+import CallPopup from './components/CallPopup'
 import { idForPath, scrollToId } from './utils/sectionNav'
 
 function App() {
   const isThankYou = window.location.pathname.replace(/\/$/, '').endsWith('/thank-you')
+  const [showCallPopup, setShowCallPopup] = useState(false)
+
+  const handlePopupDismiss = (converted) => {
+    if (!converted) setShowCallPopup(true)
+  }
 
   useEffect(() => {
     if (isThankYou) return
@@ -67,7 +73,8 @@ function App() {
       <Footer />
       <FloatingSocial />
       <MobileCTABar />
-      <Popup />
+      <Popup onDismiss={handlePopupDismiss} />
+      <CallPopup trigger={showCallPopup} />
     </>
   )
 }

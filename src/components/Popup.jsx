@@ -3,18 +3,20 @@ import { X, ArrowRight, User, Smartphone, MapPin, CalendarDays, Sparkles } from 
 import { validateLeadForm } from '../utils/formValidation'
 import './Popup.css'
 
-function Popup() {
+function Popup({ onDismiss }) {
   const [visible, setVisible] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 1200)
     return () => clearTimeout(timer)
   }, [])
 
-  const close = () => setVisible(false)
+  const close = () => {
+    setVisible(false)
+    onDismiss?.(false)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -45,7 +47,7 @@ function Popup() {
       })
 
       if (!res.ok) throw new Error('Request failed')
-      setSuccess(true)
+      window.location.href = `${import.meta.env.BASE_URL}thank-you`
     } catch {
       setError('Something went wrong. Please try again or call us directly.')
     } finally {
@@ -62,43 +64,34 @@ function Popup() {
           <X size={20} />
         </button>
 
-        {success ? (
-          <div className="popup__success">
-            <h3>Thank You!</h3>
-            <p>Our wellness expert will contact you shortly.</p>
-          </div>
-        ) : (
-          <>
-            <span className="eyebrow popup__eyebrow">
-              <Sparkles size={14} /> Trichy&rsquo;s Trusted Wellness Clinic
-            </span>
-            <h2>Start Your Weight Loss Journey Today</h2>
-            <p>Leave your details and our wellness expert will call you back.</p>
+        <span className="eyebrow popup__eyebrow">
+          <Sparkles size={14} /> Trichy&rsquo;s Trusted Wellness Clinic
+        </span>
+        <h2>Start Your Weight Loss Journey Today</h2>
+        <p>Leave your details and our wellness expert will call you back.</p>
 
-            <form className="popup__form" onSubmit={handleSubmit}>
-              <label className="hero__field">
-                <User size={17} />
-                <input type="text" name="name" placeholder="Full Name" pattern="[A-Za-z\s]+" title="Only letters are allowed" required />
-              </label>
-              <label className="hero__field">
-                <Smartphone size={17} />
-                <input type="tel" name="phone" placeholder="Mobile Number" required />
-              </label>
-              <label className="hero__field">
-                <MapPin size={17} />
-                <input type="text" name="city" placeholder="Enter your city" pattern="[A-Za-z\s]+" title="Only letters are allowed" required />
-              </label>
-              <label className="hero__field">
-                <CalendarDays size={17} />
-                <input type="date" name="date" required />
-              </label>
-              {error && <p className="hero__form-error">{error}</p>}
-              <button type="submit" className="btn btn-primary popup__submit" disabled={submitting}>
-                {submitting ? 'Submitting…' : 'Get My Consultation'} <ArrowRight size={17} />
-              </button>
-            </form>
-          </>
-        )}
+        <form className="popup__form" onSubmit={handleSubmit}>
+          <label className="hero__field">
+            <User size={17} />
+            <input type="text" name="name" placeholder="Full Name" pattern="[A-Za-z\s]+" title="Only letters are allowed" required />
+          </label>
+          <label className="hero__field">
+            <Smartphone size={17} />
+            <input type="tel" name="phone" placeholder="Mobile Number" required />
+          </label>
+          <label className="hero__field">
+            <MapPin size={17} />
+            <input type="text" name="city" placeholder="Enter your city" pattern="[A-Za-z\s]+" title="Only letters are allowed" required />
+          </label>
+          <label className="hero__field">
+            <CalendarDays size={17} />
+            <input type="date" name="date" required />
+          </label>
+          {error && <p className="hero__form-error">{error}</p>}
+          <button type="submit" className="btn btn-primary popup__submit" disabled={submitting}>
+            {submitting ? 'Submitting…' : 'Get My Consultation'} <ArrowRight size={17} />
+          </button>
+        </form>
       </div>
     </div>
   )
